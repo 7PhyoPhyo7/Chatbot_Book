@@ -119,7 +119,7 @@ const
                                         if(userList.empty)
                                     {
                                  
-                                       requestify.post('https://bophyo.herokuapp.com/RegisterQuickReply', {
+                                       requestify.post('https://kusharphat.herokuapp.com/RegisterQuickReply', {
                                         userInput: userInput || null,
                                         senderID: senderID,
                                         image: userMedia
@@ -127,7 +127,7 @@ const
                                     }
                                         else
                                     {
-                                        requestify.post('https://bophyo.herokuapp.com/user', {
+                                        requestify.post('https://kusharphat.herokuapp.com/user', {
                                         userInput: userInput|| null,
                                         senderID: senderID
                                                 })
@@ -137,7 +137,7 @@ const
                             }
                         else
                             {
-                                requestify.post('https://bophyo.herokuapp.com/advisor', {
+                                requestify.post('https://kusharphat.herokuapp.com/advisor', {
                                   userInput: userInput|| null,
                                   senderID: senderID,
                                   video: userMedia
@@ -148,7 +148,7 @@ const
               else
                 {
                             
-                         requestify.post('https://bophyo.herokuapp.com/admin', {
+                         requestify.post('https://kusharphat.herokuapp.com/admin', {
                          userInput: userInput || null,
                          senderID: senderID,
                          image: userMedia
