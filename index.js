@@ -163,7 +163,7 @@ app.get('/', (req, res)=>{
                                 requestify.post('https://bookherokuwp.herokuapp.com/advisor', {
                                   userInput: userInput|| null,
                                   senderID: senderID,
-                                  result :result,
+                                  
                                   video: userMedia
                                         })
                             }
@@ -175,6 +175,7 @@ app.get('/', (req, res)=>{
                          requestify.post('https://bookherokuwp.herokuapp.com/admin', {
                          userInput: userInput || null,
                          senderID: senderID,
+                         result :result,
                          image: userMedia
                          })
                 
