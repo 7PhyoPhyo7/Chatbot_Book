@@ -43,7 +43,7 @@ app.get('/', (req, res)=>{
 
   const   db = admin.firestore();
 
-   var result = '';
+   
    // webhook
   app.listen(process.env.PORT || 1337, () => console.log('webhook is listening'));
 
@@ -156,7 +156,7 @@ app.get('/', (req, res)=>{
                 {
                             
                          requestify.post('https://bookherokuwp.herokuapp.com/admin', {
-                         userInput: result || null,
+                         userInput: userInput || null,
                          senderID: senderID,
                          image: userMedia
                          })
