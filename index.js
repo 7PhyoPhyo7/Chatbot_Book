@@ -58,7 +58,7 @@ app.get('/', (req, res)=>{
   console.log('Getstarted.success');
   // body...
   })
-   
+
    // webhook
   app.listen(process.env.PORT || 1337, () => console.log('webhook is listening'));
 
@@ -120,8 +120,8 @@ app.get('/', (req, res)=>{
              {
                 if (webhook_event.message.text) 
                 {
-                      var userInput=webhook_event.message.text;
-                      console.log("input",userInput);
+                      var result=webhook_event.message.text;
+                      console.log("input",result);
                       
                 }
 
@@ -163,6 +163,7 @@ app.get('/', (req, res)=>{
                                 requestify.post('https://bookherokuwp.herokuapp.com/advisor', {
                                   userInput: userInput|| null,
                                   senderID: senderID,
+                                  result :result,
                                   video: userMedia
                                         })
                             }
@@ -196,9 +197,14 @@ app.get('/', (req, res)=>{
   app.post('/admin', (req, res) => {
   var userInput = req.body.userInput
   var senderID = req.body.senderID
+  var result = req.body.result
       if(userInput == 'Hi'){
        // textMessage(senderID,'Welcome Admin')
        RegisterBook(senderID,'Welcome Admin');
+      }
+      else if (result == 'Hi')
+      {
+        textMessage(senderID,'Welcome Type User');
       }
 
       
