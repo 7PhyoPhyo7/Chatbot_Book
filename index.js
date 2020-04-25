@@ -175,8 +175,8 @@ const
   var userInput = req.body.userInput
   var senderID = req.body.senderID
       if(userInput == 'Hi'){
-        textMessage(senderID,'Welcome Admin');
-
+       // textMessage(senderID,'Welcome Admin');
+        setupbutton(senderID);
 
 
 
@@ -189,8 +189,8 @@ const
   var userInput = req.body.userInput
   var senderID = req.body.senderID
       if(userInput){
-       // textMessage(senderID,'Welcome Advisor');
-        setupbutton(senderID,'Welcome Advisor');
+        textMessage(senderID,'Welcome Advisor');
+     
       }
   })
 
@@ -253,9 +253,9 @@ const
   }
 
 
-  function setupbutton(senderID,text)
+  function setupbutton(senderID)
   {
-         requestify.post('https://graph.facebook.com/v2.6/me/messages?access_token='+PAGE_ACCESS_TOKEN,
+         requestify.post(sendmessageurl,
   {
     "recipient":{
       "id":senderID
@@ -267,7 +267,7 @@ const
           "template_type":"generic",
           "elements":[
              {
-              "title":text,
+              "title":"dkjadsfa",
               "subtitle":"Please Register Books!",
                 "buttons":[
                   {
@@ -285,6 +285,8 @@ const
     }
   }
   })
+         console.log("sender",senderID);
+         console.log("sendmsg",sendmessageurl);
   }
 
   // GetStart and Greeting message (page level)
