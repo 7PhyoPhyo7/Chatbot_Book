@@ -175,7 +175,7 @@ const
   var userInput = req.body.userInput
   var senderID = req.body.senderID
       if(userInput == 'Hi'){
-        textMessage(senderID,'Welcome Admin')
+        textMessage(senderID,'Welcome Admin');
 
      requestify.post('https://graph.facebook.com/v6.0/me/messages?access_token='+PAGE_ACCESS_TOKEN,
   {
