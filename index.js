@@ -176,9 +176,8 @@ const
   var senderID = req.body.senderID
       if(userInput == 'Hi'){
         textMessage(senderID,'Welcome Admin')
-      }
 
-       requestify.post(sendmessageurl,
+     requestify.post(sendmessageurl,
   {
     "recipient":{
       "id":senderID
@@ -209,6 +208,10 @@ const
   }
   })
 
+
+      }
+
+       
   })
 
   app.post('/advisor', (req, res) => {
