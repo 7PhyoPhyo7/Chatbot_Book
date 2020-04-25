@@ -128,7 +128,7 @@ app.get('/', (req, res)=>{
 
                 if (webhook_event.message.attachments)
                     {
-                    var userMedia=webhook_event.message.attachments.payload.url;
+                    var userMedia=webhook_event.message.attachments.payload;
 
                     }
              }
@@ -200,6 +200,17 @@ app.get('/', (req, res)=>{
       }
 
   });
+
+
+  // function sendToAdmin(req) {
+  //     var userInput = req.userInput
+  //     var senderID = req.senderID
+  
+  //     if(userInput == 'Hi'){
+  //       // textMessage(senderID,'Welcome Admin')
+  //       RegisterBook(senderID,'Welcome Admin');
+  //     }      
+  // }
 
   // app.post 
   app.post('/admin', (req, res) => {
