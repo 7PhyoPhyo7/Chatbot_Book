@@ -154,6 +154,8 @@ const
                          senderID: senderID,
                          image: userMedia
                          })
+                         console.log("find admin", userInput);
+                         console.log("find text", senderID);
                 
                  }
            })
