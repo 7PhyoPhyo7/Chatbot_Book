@@ -14,11 +14,15 @@ const
   //userlevelurl = 'https://graph.facebook.com/v6.0/me/custom_user_settings?psid='+senderID+'&access_token='+PAGE_ACCESS_TOKEN,
   app = express().use(body_parser.json()); // creates express http server
 
+app.use(express.static('public'));
 
 app.get('/', (req, res)=>{
   res.send("Hello Oppa!");
 })
 
+app.get('/testing', (req, res) => {
+  res.sendFile(`${__dirname}/public/app.html`);
+})
 
 
  // -- variables firebase
@@ -58,9 +62,9 @@ app.get('/', (req, res)=>{
   console.log('Getstarted.success');
   // body...
   })
-
-   // webhook
-  app.listen(process.env.PORT || 1337, () => console.log('webhook is listening'));
+  const port = process.env.PORT || 1337;
+   // webhook()
+  app.listen(port, () => console.log(`webhook is listening >> ${port}`));
 
    // Accepts GET requests at the /webhook endpoint
   app.get('/webhook', (req, res) => {
@@ -249,6 +253,12 @@ app.get('/', (req, res)=>{
       }
   })
 
+  app.get('/login', (req, res) => {
+    // ejs lote tl
+
+    // res.send( <payload> );
+  })
+
   // functions
 
   function textMessage(senderID,text){
@@ -288,14 +298,14 @@ app.get('/', (req, res)=>{
 
                   {
                     "type":"web_url",
-                    "url":"https://www.google.com",
+                    "url":"https://www.google.com", // 'http://herokuurl/login'
                     "title":"Google",
                     "webview_height_ratio": "full"
                   },
                   {
                     "type":"web_url",
-                    "url":"https://www.messenger.com/",
-                    "title":"Messenger",
+                    "url":"https://bookherokuwp.herokuapp.com/testing",
+                    "title":"Tesing",
                     "webview_height_ratio": "full"
                   }
                ]}
