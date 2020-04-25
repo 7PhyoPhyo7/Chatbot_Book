@@ -92,24 +92,21 @@ const
           console.log("webhook_event",webhook_event);
           var senderID=webhook_event.sender.id;
           console.log('senderID',senderID);
-          if(webhook_event.postback)
-             {
-            var userInput=webhook_event.postback.payload; 
-             }
-          if (webhook_event.message) 
-             {
-                if (webhook_event.message.text) 
-                {
-                      var userInput=webhook_event.message.text;
-                      console.log("webhook user input",userInput);
-                }
+          if(webhook_event.postback){
+        var userInput=webhook_event.postback.payload;
+      }
+      if (webhook_event.message) 
+      {
+        if (webhook_event.message.text)
+        {
+          var userInput=webhook_event.message.text;
+        }
+      if (webhook_event.message.attachments)
+      {
+        var userMedia=webhook_event.message.attachments.payload.url;
 
-                if (webhook_event.message.attachments)
-                    {
-                    var userMedia=webhook_event.message.attachments.payload.url;
-
-                    }
-             }
+      }
+    }
                
            db.collection('admin').where('adminid','==',`${senderID}`).get().then(adminList => {
                if(adminList.empty)
@@ -254,7 +251,7 @@ const
 
   // GetStart and Greeting message (page level)
   requestify.post(pagelevelurl,
-    {"get_started":{"payload":"Hii"},  
+    {"get_started":{"payload":"Hi"},  
   "greeting": [
     {
       "locale":"default",
