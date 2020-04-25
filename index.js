@@ -104,7 +104,8 @@ app.get('/', (req, res)=>{
       if (body.object === 'page') {
 
         // Iterates over each entry - there may be multiple if batched
-        body.entry.forEach(function(entry) {
+        body.entry.forEach(function(entry) 
+        {
 
           // Gets the message. entry.messaging is an array, but 
           // will only ever contain one message, so we get index 0
@@ -120,8 +121,8 @@ app.get('/', (req, res)=>{
              {
                 if (webhook_event.message.text) 
                 {
-                      var result=webhook_event.message.text;
-                      console.log("input",result);
+                      var userInput=webhook_event.message.text;
+                      
                       
                 }
 
@@ -175,8 +176,7 @@ app.get('/', (req, res)=>{
                          requestify.post('https://bookherokuwp.herokuapp.com/admin', {
                          userInput: userInput || null,
                          senderID: senderID,
-                         result :result,
-                         image: userMedia
+                         
                          })
                 
                  }
@@ -198,15 +198,12 @@ app.get('/', (req, res)=>{
   app.post('/admin', (req, res) => {
   var userInput = req.body.userInput
   var senderID = req.body.senderID
-  var result = req.body.result
+  
       if(userInput == 'Hi'){
        // textMessage(senderID,'Welcome Admin')
        RegisterBook(senderID,'Welcome Admin');
       }
-      else if (result == 'Hi')
-      {
-        textMessage(senderID,'Welcome Type User');
-      }
+      
 
       
   })
