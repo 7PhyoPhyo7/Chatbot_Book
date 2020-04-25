@@ -148,7 +148,7 @@ const
                 {
                             
                          requestify.post('https://kusharphat.herokuapp.com/admin', {
-                         userInput: 'Hi' || null,
+                         userInput: userInput || null,
                          senderID: senderID,
                          image: userMedia
                          })
