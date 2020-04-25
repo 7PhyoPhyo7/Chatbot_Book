@@ -227,12 +227,12 @@ const
                               "text": text,
                               "quick_replies":[
                                 {
-                                  "content_type":"messaging",
+                                  "content_type":"text",
                                   "title":"Admin",
                                   "payload":"register_admin",
                                 },
                                 {
-                                  "content_type":"messaging",
+                                  "content_type":"text",
                                   "title":"User",
                                   "payload":"register_user",
                                 }
