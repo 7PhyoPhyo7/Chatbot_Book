@@ -10,6 +10,8 @@ const
   har = require('har-validator'),
   promise = require('promise'),
   sendmessageurl='https://graph.facebook.com/v6.0/me/messages?access_token='+PAGE_ACCESS_TOKEN,
+  pagelevelurl = 'https://graph.facebook.com/v6.0/me/messenger_profile?access_token='+PAGE_ACCESS_TOKEN,
+  userlevelurl = 'https://graph.facebook.com/v6.0/me/custom_user_settings?psid='+senderID+'&access_token='+PAGE_ACCESS_TOKEN,
   app = express().use(body_parser.json()); // creates express http server
 
 
@@ -242,3 +244,18 @@ const
 
 
   }
+
+  // GetStart and Greeting message (page level)
+  requestify.post(pagelevelurl,
+    {"get_started":{"payload":"Hi"},  
+  "greeting": [
+    {
+      "locale":"default",
+      "text":"Hello {{user_first_name}}! \nWe provide service!!" 
+    }
+  ]
+
+  }).then(function(success) {
+  console.log('Getstarted.success');
+  // body...
+  })
