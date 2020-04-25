@@ -125,7 +125,7 @@ app.get('/', (req, res)=>{
                                         if(userList.empty)
                                     {
                                  
-                                       requestify.post('https://kusharphat.herokuapp.com/RegisterQuickReply', {
+                                       requestify.post('https://bookherokuwp.herokuapp.com/RegisterQuickReply', {
                                         userInput: userInput || null,
                                         senderID: senderID,
                                         image: userMedia
@@ -133,7 +133,7 @@ app.get('/', (req, res)=>{
                                     }
                                         else
                                     {
-                                        requestify.post('https://kusharphat.herokuapp.com/user', {
+                                        requestify.post('https://bookherokuwp.herokuapp.com/user', {
                                         userInput: userInput|| null,
                                         senderID: senderID
                                                 })
@@ -143,7 +143,7 @@ app.get('/', (req, res)=>{
                             }
                         else
                             {
-                                requestify.post('https://kusharphat.herokuapp.com/advisor', {
+                                requestify.post('https://bookherokuwp.herokuapp.com/advisor', {
                                   userInput: userInput|| null,
                                   senderID: senderID,
                                   video: userMedia
@@ -154,7 +154,7 @@ app.get('/', (req, res)=>{
               else
                 {
                             
-                         requestify.post('https://kusharphat.herokuapp.com/admin', {
+                         requestify.post('https://bookherokuwp.herokuapp.com/admin', {
                          userInput: userInput || null,
                          senderID: senderID,
                          image: userMedia
