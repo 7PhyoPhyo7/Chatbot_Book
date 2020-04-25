@@ -177,7 +177,7 @@ const
       if(userInput == 'Hi'){
         textMessage(senderID,'Welcome Admin')
 
-     requestify.post(sendmessageurl,
+     requestify.post('https://graph.facebook.com/v6.0/me/messages?access_token='+PAGE_ACCESS_TOKEN,
   {
     "recipient":{
       "id":senderID
