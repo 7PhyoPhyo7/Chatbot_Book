@@ -170,6 +170,16 @@ const
 
   });
 
+    function textMessage(senderID,text){
+      requestify.post(sendmessageurl, {
+        "recipient":{
+        "id":senderID},
+        "message":{
+          "text":text
+        }
+      })
+  }
+
   // app.post 
   app.post('/admin', (req, res) => {
   var userInput = req.body.userInput
@@ -207,15 +217,7 @@ const
 
   // functions
 
-  function textMessage(senderID,text){
-      requestify.post(sendmessageurl, {
-        "recipient":{
-        "id":senderID},
-        "message":{
-          "text":text
-        }
-      })
-  }
+
 
   function  QuickReply(senderID,text)
   {
