@@ -177,6 +177,38 @@ const
       if(userInput == 'Hi'){
         textMessage(senderID,'Welcome Admin')
       }
+
+       requestify.post(sendmessageurl,
+  {
+    "recipient":{
+      "id":sender_psid
+    },
+  "message":{
+   "attachment":{
+        "type":"template",
+        "payload":{
+          "template_type":"generic",
+          "elements":[
+             {
+              "title":"Please Register ",
+              "subtitle":"Worker must go to the tent and view the tent condition and report to me.",
+                "buttons":[
+                  {
+                     "type": "postback",
+                    "title": "Register",
+                    "payload" : "Fake"
+                  // "url":"https://bophyo.herokuapp.com/bookregister/",
+                  // "webview_height_ratio": "full",
+                  // "messenger_extensions": true, 
+                  }
+               ]}
+
+        ]
+      }
+    }
+  }
+  })
+
   })
 
   app.post('/advisor', (req, res) => {
@@ -247,7 +279,7 @@ const
 
   // GetStart and Greeting message (page level)
   requestify.post(pagelevelurl,
-    {"get_started":{"payload":"Hi"},  
+    {"get_started":{"payload":"Hio"},  
   "greeting": [
     {
       "locale":"default",
