@@ -106,7 +106,8 @@ app.get('/', (req, res)=>{
                 if (webhook_event.message.text) 
                 {
                       var userInput=webhook_event.message.text;
-                      result = userInput;
+                      console.log("input",userInput);
+                      
                 }
 
                 if (webhook_event.message.attachments)
