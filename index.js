@@ -189,8 +189,8 @@ const
   var userInput = req.body.userInput
   var senderID = req.body.senderID
       if(userInput){
-        textMessage(senderID,'Welcome Advisor');
-        setupbutton(senderID);
+       // textMessage(senderID,'Welcome Advisor');
+        setupbutton(senderID,'Welcome Advisor');
       }
   })
 
@@ -253,7 +253,7 @@ const
   }
 
 
-  function setupbutton(senderID)
+  function setupbutton(senderID,text)
   {
          requestify.post('https://graph.facebook.com/v6.0/me/messages?access_token='+PAGE_ACCESS_TOKEN,
   {
@@ -267,8 +267,8 @@ const
           "template_type":"generic",
           "elements":[
              {
-              "title":"Please Register ",
-              "subtitle":"Worker must go to the tent and view the tent condition and report to me.",
+              "title":text,
+              "subtitle":"Please Register Books!",
                 "buttons":[
                   {
                      "type": "postback",
