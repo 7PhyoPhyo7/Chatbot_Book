@@ -202,15 +202,17 @@ app.get('/', (req, res)=>{
   });
 
 
-  // function sendToAdmin(req) {
-  //     var userInput = req.userInput
-  //     var senderID = req.senderID
+  function sendToAdmin(req) {
+      var userInput = req.userInput
+      var senderID = req.senderID
   
-  //     if(userInput == 'Hi'){
-  //       // textMessage(senderID,'Welcome Admin')
-  //       RegisterBook(senderID,'Welcome Admin');
-  //     }      
-  // }
+      if(userInput == 'Hi'){
+        // textMessage(senderID,'Welcome Admin')
+        RegisterBook(senderID,'Welcome Admin');
+      }   
+
+      return null;   
+  }
 
   // app.post 
   app.post('/admin', (req, res) => {
@@ -221,9 +223,6 @@ app.get('/', (req, res)=>{
        // textMessage(senderID,'Welcome Admin')
        RegisterBook(senderID,'Welcome Admin');
       }
-      
-
-      
   })
 
   app.post('/advisor', (req, res) => {
@@ -278,13 +277,26 @@ app.get('/', (req, res)=>{
               "title":text,
               "subtitle":"Please Register Book",
                 "buttons":[
-                  {
-                     "type": "postback",
-                    "title": "Register",
-                    "payload" : "Fake"
+                  // {
+                  //    "type": "postback",
+                  //   "title": "Register",
+                  //   "payload" : "Fake"
                   // "url":"https://bophyo.herokuapp.com/bookregister/",
                   // "webview_height_ratio": "full",
                   // "messenger_extensions": true, 
+                  // }
+
+                  {
+                    "type":"web_url",
+                    "url":"https://www.google.com",
+                    "title":"Google",
+                    "webview_height_ratio": "full"
+                  },
+                  {
+                    "type":"web_url",
+                    "url":"https://www.messenger.com/",
+                    "title":"Messenger",
+                    "webview_height_ratio": "full"
                   }
                ]}
 
