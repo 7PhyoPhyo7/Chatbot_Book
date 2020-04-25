@@ -173,11 +173,18 @@ app.get('/', (req, res)=>{
               else
                 {
                             
-                         requestify.post('https://bookherokuwp.herokuapp.com/admin', {
-                         userInput: userInput || null,
-                         senderID: senderID,
+                         // requestify.post('https://bookherokuwp.herokuapp.com/admin', {
+                         // userInput: userInput || null,
+                         // senderID: senderID,
                          
-                         })
+                         // })
+
+                         console.log({ userInput, senderID });
+
+                    if(userInput == 'Hi') {
+                      // textMessage(senderID,'Welcome Admin')
+                      RegisterBook(senderID,'Welcome Admin');
+                    }
                 
                  }
            })
