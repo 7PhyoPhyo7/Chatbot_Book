@@ -210,7 +210,7 @@ const
   app.post('/RegisterQuickReply', (req, res) => {
   var userInput = req.body.userInput
   var senderID = req.body.senderID
-    if(userInput == 'Hi'){
+    if(userInput == 'Hii'){
      QuickReply(senderID,'Welcome New User');
       }
   })
