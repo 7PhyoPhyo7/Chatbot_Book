@@ -8,7 +8,6 @@ const
   ejs = require("ejs"),
   fs = require('fs'),
   har = require('har-validator'),
-  db = admin.firestore(),
   promise = require('promise'),
   sendmessageurl='https://graph.facebook.com/v6.0/me/messages?access_token='+PAGE_ACCESS_TOKEN,
   app = express().use(body_parser.json()); // creates express http server
@@ -35,7 +34,7 @@ const
   });
 
 
-
+  const   db = admin.firestore();
 
 
    // webhook
