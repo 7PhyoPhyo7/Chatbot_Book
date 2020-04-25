@@ -11,7 +11,7 @@ const
   promise = require('promise'),
   sendmessageurl='https://graph.facebook.com/v6.0/me/messages?access_token='+PAGE_ACCESS_TOKEN,
   pagelevelurl = 'https://graph.facebook.com/v6.0/me/messenger_profile?access_token='+PAGE_ACCESS_TOKEN,
-  userlevelurl = 'https://graph.facebook.com/v6.0/me/custom_user_settings?psid='+senderID+'&access_token='+PAGE_ACCESS_TOKEN,
+  //userlevelurl = 'https://graph.facebook.com/v6.0/me/custom_user_settings?psid='+senderID+'&access_token='+PAGE_ACCESS_TOKEN,
   app = express().use(body_parser.json()); // creates express http server
 
 
