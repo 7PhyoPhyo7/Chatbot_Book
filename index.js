@@ -101,6 +101,7 @@ const
                 if (webhook_event.message.text) 
                 {
                       var userInput=webhook_event.message.text;
+                      console.log("webhook user input",userInput);
                 }
 
                 if (webhook_event.message.attachments)
@@ -154,8 +155,8 @@ const
                          senderID: senderID,
                          image: userMedia
                          })
-                         console.log("find admin", userInput);
-                         console.log("find text", senderID);
+                         console.log("find text", userInput);
+                         console.log("find admin", senderID);
                 
                  }
            })
@@ -253,7 +254,7 @@ const
 
   // GetStart and Greeting message (page level)
   requestify.post(pagelevelurl,
-    {"get_started":{"payload":"Hi"},  
+    {"get_started":{"payload":"Hii"},  
   "greeting": [
     {
       "locale":"default",
