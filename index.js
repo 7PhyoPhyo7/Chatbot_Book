@@ -9,13 +9,13 @@
   app = express().use(bodyParser.json()); // creates express http server 
   const sendmessageurl='https://graph.facebook.com/v4.0/me/messages?access_token='+PageAccessToken
   
-  
+  app.get('/', (req, res)=>{
+  res.send("Hello vro!");
+})
 var admin = require("firebase-admin");
 // Sets server port and logs message on success
 app.listen(process.env.PORT || 1337, () => console.log('webhook is listening'));
-app.get('/', (req, res)=>{
-  res.send("Hello vro!");
-})
+
 var serviceAccount = {
   "type": "service_account",
   "project_id": "book-c045a",
