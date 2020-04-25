@@ -180,7 +180,8 @@ app.get('/', (req, res)=>{
   var userInput = req.body.userInput
   var senderID = req.body.senderID
       if(userInput == 'Hi'){
-        textMessage(senderID,'Welcome Admin')
+       // textMessage(senderID,'Welcome Admin')
+       RegisterBook(senderID,'Welcome Admin');
       }
 
       
@@ -221,6 +222,44 @@ app.get('/', (req, res)=>{
         }
       })
   }
+
+ function RegisterBook(senderID,text){
+ requestify.post('https://graph.facebook.com/v2.6/me/messages?access_token='+PAGE_ACCESS_TOKEN,
+  {
+    "recipient":{
+      "id":senderID
+    },
+  "message":{
+   "attachment":{
+        "type":"template",
+        "payload":{
+          "template_type":"generic",
+          "elements":[
+             {
+              "title":text,
+              "subtitle":"Please Register Book",
+                "buttons":[
+                  {
+                     "type": "postback",
+                    "title": "Register",
+                    "payload" : "Fake"
+                  // "url":"https://bophyo.herokuapp.com/bookregister/",
+                  // "webview_height_ratio": "full",
+                  // "messenger_extensions": true, 
+                  }
+               ]}
+
+        ]
+      }
+    }
+  }
+  })
+ 
+  console.log('button_sender',sender_psid);
+
+
+
+}
 
   function  QuickReply(senderID,text)
   {
