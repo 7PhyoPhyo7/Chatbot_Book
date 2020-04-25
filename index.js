@@ -175,22 +175,17 @@ const
   var userInput = req.body.userInput
   var senderID = req.body.senderID
       if(userInput == 'Hi'){
-       // textMessage(senderID,'Welcome Admin');
-        setupbutton(senderID);
-
-
-
+        textMessage(senderID,'Welcome Admin')
       }
 
-       
+      
   })
 
   app.post('/advisor', (req, res) => {
   var userInput = req.body.userInput
   var senderID = req.body.senderID
       if(userInput){
-        textMessage(senderID,'Welcome Advisor');
-     
+        textMessage(senderID,'Welcome Advisor')
       }
   })
 
@@ -222,7 +217,7 @@ const
       })
   }
 
-  function QuickReply(senderID,text)
+  function  QuickReply(senderID,text)
   {
           requestify.post(sendmessageurl,
                              {  
@@ -252,46 +247,9 @@ const
 
   }
 
-
-  function setupbutton(senderID)
-  {
-         requestify.post(sendmessageurl,
-  {
-    "recipient":{
-      "id":senderID
-    },
-  "message":{
-   "attachment":{
-        "type":"template",
-        "payload":{
-          "template_type":"generic",
-          "elements":[
-             {
-              "title":"dkjadsfa",
-              "subtitle":"Please Register Books!",
-                "buttons":[
-                  {
-                     "type": "postback",
-                    "title": "Register",
-                    "payload" : "Fake"
-                  // "url":"https://bophyo.herokuapp.com/bookregister/",
-                  // "webview_height_ratio": "full",
-                  // "messenger_extensions": true, 
-                  }
-               ]}
-
-        ]
-      }
-    }
-  }
-  })
-         console.log("sender",senderID);
-         console.log("sendmsg",sendmessageurl);
-  }
-
   // GetStart and Greeting message (page level)
   requestify.post(pagelevelurl,
-    {"get_started":{"payload":"Hio"},  
+    {"get_started":{"payload":"Hi"},  
   "greeting": [
     {
       "locale":"default",
@@ -303,5 +261,3 @@ const
   console.log('Getstarted.success');
   // body...
   })
-
-  
