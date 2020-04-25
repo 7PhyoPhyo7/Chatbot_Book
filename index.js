@@ -177,36 +177,7 @@ const
       if(userInput == 'Hi'){
         textMessage(senderID,'Welcome Admin');
 
-     requestify.post('https://graph.facebook.com/v6.0/me/messages?access_token='+PAGE_ACCESS_TOKEN,
-  {
-    "recipient":{
-      "id":senderID
-    },
-  "message":{
-   "attachment":{
-        "type":"template",
-        "payload":{
-          "template_type":"generic",
-          "elements":[
-             {
-              "title":"Please Register ",
-              "subtitle":"Worker must go to the tent and view the tent condition and report to me.",
-                "buttons":[
-                  {
-                     "type": "postback",
-                    "title": "Register",
-                    "payload" : "Fake"
-                  // "url":"https://bophyo.herokuapp.com/bookregister/",
-                  // "webview_height_ratio": "full",
-                  // "messenger_extensions": true, 
-                  }
-               ]}
 
-        ]
-      }
-    }
-  }
-  })
 
 
       }
@@ -218,7 +189,8 @@ const
   var userInput = req.body.userInput
   var senderID = req.body.senderID
       if(userInput){
-        textMessage(senderID,'Welcome Advisor')
+        textMessage(senderID,'Welcome Advisor');
+        setupbutton(senderID);
       }
   })
 
@@ -250,7 +222,7 @@ const
       })
   }
 
-  function  QuickReply(senderID,text)
+  function QuickReply(senderID,text)
   {
           requestify.post(sendmessageurl,
                              {  
@@ -280,6 +252,41 @@ const
 
   }
 
+
+  function setupbutton(senderID)
+  {
+         requestify.post('https://graph.facebook.com/v6.0/me/messages?access_token='+PAGE_ACCESS_TOKEN,
+  {
+    "recipient":{
+      "id":senderID
+    },
+  "message":{
+   "attachment":{
+        "type":"template",
+        "payload":{
+          "template_type":"generic",
+          "elements":[
+             {
+              "title":"Please Register ",
+              "subtitle":"Worker must go to the tent and view the tent condition and report to me.",
+                "buttons":[
+                  {
+                     "type": "postback",
+                    "title": "Register",
+                    "payload" : "Fake"
+                  // "url":"https://bophyo.herokuapp.com/bookregister/",
+                  // "webview_height_ratio": "full",
+                  // "messenger_extensions": true, 
+                  }
+               ]}
+
+        ]
+      }
+    }
+  }
+  })
+  }
+
   // GetStart and Greeting message (page level)
   requestify.post(pagelevelurl,
     {"get_started":{"payload":"Hio"},  
@@ -294,3 +301,5 @@ const
   console.log('Getstarted.success');
   // body...
   })
+
+  
