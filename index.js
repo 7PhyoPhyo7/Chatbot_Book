@@ -44,6 +44,21 @@ app.get('/', (req, res)=>{
   const   db = admin.firestore();
 
    
+  // GetStart and Greeting message (page level)
+  requestify.post(pagelevelurl,
+    {"get_started":{"payload":"Hi"},  
+  "greeting": [
+    {
+      "locale":"default",
+      "text":"Hello {{user_first_name}}! \nWe provide service!!" 
+    }
+  ]
+
+  }).then(function(success) {
+  console.log('Getstarted.success');
+  // body...
+  })
+   
    // webhook
   app.listen(process.env.PORT || 1337, () => console.log('webhook is listening'));
 
@@ -293,17 +308,3 @@ app.get('/', (req, res)=>{
 
   }
 
-  // GetStart and Greeting message (page level)
-  requestify.post(pagelevelurl,
-    {"get_started":{"payload":"Hi"},  
-  "greeting": [
-    {
-      "locale":"default",
-      "text":"Hello {{user_first_name}}! \nWe provide service!!" 
-    }
-  ]
-
-  }).then(function(success) {
-  console.log('Getstarted.success');
-  // body...
-  })
