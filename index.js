@@ -29,16 +29,15 @@ app.get('/', (req, res)=>{
 app.set('view engine', 'ejs');
 app.set('views', __dirname+'/views');
 
-app.get('/register_books/:sender_id',function(req,res){
-    const sender_id = req.params.sender_id;
-    res.render('testing.ejs',{title:"Hi!! from WebView", sender_id:sender_id});
+app.get('/register_books',function(req,res){
+    res.render('testing.ejs',{title:"Hi!! from WebView"});
 });
 
 
 app.post('/register_books', (req,res)=> {
   let title = req.body.title;
   let description = req.body.description;
-  let sender = req.body.sender;
+  let sender = req.body.senderID;
   console.log("title",title);
   console.log("description",description);
   console.log("sender",sender);
@@ -339,7 +338,7 @@ app.post('/register_books', (req,res)=> {
                   // }
                   {
                     "type":"web_url",
-                    "url":"https://bookherokuwp.herokuapp.com/register_books"+senderID,
+                    "url":"https://bookherokuwp.herokuapp.com/register_books",
                     "title":"Register Books",
                     "webview_height_ratio": "full"
                   },
