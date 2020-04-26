@@ -404,16 +404,15 @@ requestify.post(sendmessageurl,
          //obj._id  = doc.id ;        
            obj.email = doc.data().email;             
            obj.phno = doc.data().phno;
-           elementItems.push(obj.email);
+           elementItems.push(obj);
 
            console.log("Email",obj.email);
            console.log("Phno",obj.phno);
           })
 
       
-                  forEach(elementItems)
-                      {
-                              requestify.post('https://graph.facebook.com/v2.6/me/messages?access_token='+PAGE_ACCESS_TOKEN,
+                 
+                    requestify.post('https://graph.facebook.com/v2.6/me/messages?access_token='+PAGE_ACCESS_TOKEN,
                         {
                           "recipient":{
                           "id":senderID
@@ -423,14 +422,14 @@ requestify.post(sendmessageurl,
                             "type":"template",
                             "payload":{
                               "template_type":"generic",
-                              "elements":elementItems.email
+                              "elements":elementItems
                           }
                         }
                       }
                         }).catch((err) => {
                           console.log('Error getting documents', err);
                         });
-                      }
+                      
         })
 
    
