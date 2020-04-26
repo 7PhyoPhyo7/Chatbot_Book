@@ -399,7 +399,7 @@ requestify.post(sendmessageurl,
           let elementItems = [];
           booklist.forEach((doc) => {
           
-
+         /*
              var obj = {};
          //obj._id  = doc.id ;        
            obj.email = doc.data().email;             
@@ -408,6 +408,23 @@ requestify.post(sendmessageurl,
 
            console.log("Email",obj.email);
            console.log("Phno",obj.phno);
+           */
+
+        let data = {
+            "title":doc.data().email,
+            "subtitle":doc.data().phno,
+              "buttons":[
+              {
+                "type":"postback",
+                "title":"Complete",
+                "payload":`Workcomplete ${doc.data().email} `
+              }
+
+             ]}
+             console.log(data)
+             elementItems.push(data)
+             console.log(elementItems)
+     
           })
 
       
