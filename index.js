@@ -50,7 +50,7 @@ app.get('/testing', (req, res) => {
    
   // GetStart and Greeting message (page level)
   requestify.post(pagelevelurl,
-    {"get_started":{"payload":"Hi"},  
+    {"get_started":{"payload":"Start"},  
   "greeting": [
     {
       "locale":"default",
@@ -188,6 +188,10 @@ app.get('/testing', (req, res) => {
                     if(userInput == 'Hi') {
                       // textMessage(senderID,'Welcome Admin')
                       RegisterBook(senderID,'Welcome Admin');
+                    }
+                    else
+                    {
+                      textMessage(senderID,'Welcome Admin');
                     }
                 
                  }
