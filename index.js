@@ -20,7 +20,7 @@ app.get('/', (req, res)=>{
   res.send("Hello Oppa!");
 })
 
-app.get('/testing', (req, res) => {
+app.get('/register_books', (req, res) => {
   res.sendFile(`${__dirname}/public/app.html`);
 })
 
@@ -192,7 +192,7 @@ app.get('/testing', (req, res) => {
                     else if (userInput == 'Start')
                     {
                       greeting(senderID,'Please Type "Hi" to Start Admin Process! ');
-                      
+
                       textMessage(senderID,'Welcome Admin');
                     }
                 
@@ -317,17 +317,22 @@ app.get('/testing', (req, res) => {
                   // "webview_height_ratio": "full",
                   // "messenger_extensions": true, 
                   // }
-
+                  {
+                    "type":"web_url",
+                    "url":"https://bookherokuwp.herokuapp.com/register_books",
+                    "title":"Register Books",
+                    "webview_height_ratio": "full"
+                  },
                   {
                     "type":"web_url",
                     "url":"https://www.google.com", // 'http://herokuurl/login'
-                    "title":"Google",
+                    "title":"Books List",
                     "webview_height_ratio": "full"
                   },
                   {
                     "type":"web_url",
                     "url":"https://bookherokuwp.herokuapp.com/testing",
-                    "title":"Tesing",
+                    "title":"Edit Books",
                     "webview_height_ratio": "full"
                   }
                ]}
