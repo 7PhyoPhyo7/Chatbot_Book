@@ -24,6 +24,10 @@ app.get('/register_books', (req, res) => {
   res.sendFile(`${__dirname}/public/registerbooks.html`);
 })
 
+app.post('/register_books', (req,res)=> {
+  let name = req.body.name;
+  console.log("Name",name);
+})
 
  // -- variables firebase
   var admin = require("firebase-admin");
