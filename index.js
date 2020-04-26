@@ -67,7 +67,7 @@ app.post('/register_books', (req,res)=> {
 })
 
 
-
+/*
 app.post('/book_list/:sender_id',(req,res)=>
 
 { 
@@ -115,6 +115,7 @@ requestify.post(sendmessageurl,
   })}
 })
 })
+*/
 
  // -- variables firebase
   var admin = require("firebase-admin");
@@ -415,7 +416,7 @@ requestify.post(sendmessageurl,
                     "webview_height_ratio": "full"
                   },
                   {
-                    "type":"text",
+                    "type":"web_url",
                     "url":"https://bookherokuwp.herokuapp.com/book_list/"+senderID,
                     "title":"Books List",
                     //"payload" : "booklist"
