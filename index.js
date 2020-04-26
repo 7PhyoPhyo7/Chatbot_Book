@@ -393,50 +393,22 @@ requestify.post(sendmessageurl,
   function Get_BookList(senderID)
   {
 
-var elements = []
-    
-   
-   db.collection('Book').get().then(booklist => {
-  if(booklist.empty){
+        db.collection('Book').get()
+        .then((booklist) => {
 
-  }
-    else{
-elements = []
-      booklist.forEach( doc => {
-     
-        let data = {
-            "title":doc.data.email,
-            "subtitle":doc.data.phno,
-              "buttons":[
-              {
-                "type":"postback",
-                "title":"Complete",
-                "payload":`Workcomplete`
-              }
+          let elementItems = [];
+          booklist.forEach((doc) => {
+          
 
-             ]}
-             console.log(data)
-             elements.push(data)
-             console.log(elements)
-      
-})
-requestify.post(sendmessageurl,
-  {
-    "recipient":{
-    "id":senderID
-  },
-  "message":{
-    "attachment":{
-      "type":"template",
-      "payload":{
-        "template_type":"generic",
-        "elements":elements
-    }
-  }
-}
-  })}
-})
+             var obj = {};
+         //obj._id  = doc.id ;        
+           obj.email = doc.data().email;             
+           obj.phno = doc.data().phno;
 
+           console.log("Email",obj.email);
+           console.log("Phno",obj.phno);
+          })
+        })
   }
 
  function RegisterBook(senderID,text){
