@@ -49,8 +49,8 @@ app.post('/register_books', (req,res)=> {
   console.log("Title",title);
   console.log("description",description);
   //console.log("Sender",sender);
-    textMessage(sender,"Register successful!");
-
+  textMessage(sender,"Register successful!");
+    res.status(200).send('Message Success');
 })
 
  // -- variables firebase
