@@ -415,10 +415,10 @@ requestify.post(sendmessageurl,
                     "webview_height_ratio": "full"
                   },
                   {
-                    "type":"web_url",
-                    "url":"https://bookherokuwp.herokuapp.com/book_list/"+senderID,
+                    "type":"text",
+                    //"url":"https://bookherokuwp.herokuapp.com/book_list/"+senderID,
                     "title":"Books List",
-                    "webview_height_ratio": "full"
+                    "payload" : "booklist"
                   },
                   {
                     "type":"web_url",
