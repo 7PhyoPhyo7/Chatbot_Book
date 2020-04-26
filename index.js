@@ -22,14 +22,16 @@ app.get('/', (req, res)=>{
 
 app.get('/register_books', (req, res) => {
 //  res.sendFile(`${__dirname}/public/registerbooks.html`);
-res.sendFile(`${__dirname}/public/book.php`);
+res.sendFile(`${__dirname}/public/testing.ejs`);
 })
 
 app.post('/register_books', (req,res)=> {
-  let name = req.body.userName;
+  let title = req.body.title;
+  let description = req.body.description;
   let sender = req.body.sender;
-  console.log("Name",name);
-  console.log("Sender PHP",sender);
+  console.log("title",title);
+  console.log("description",description);
+  console.log("sender",sender);
 
 })
 
