@@ -191,8 +191,9 @@ app.get('/testing', (req, res) => {
                     }
                     else if (userInput == 'Start')
                     {
-                      textMessage(senderID,'Welcome Admin');
                       greeting(senderID,'Please Type "Hi" to Start Admin Process! ');
+                      
+                      textMessage(senderID,'Welcome Admin');
                     }
                 
                  }
