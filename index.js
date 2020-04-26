@@ -417,7 +417,7 @@ requestify.post(sendmessageurl,
                   },
                   {
                     "type":"postback",
-                    //"url":"https://bookherokuwp.herokuapp.com/book_list/"+senderID,
+                    "url":"https://bookherokuwp.herokuapp.com/book_list/",
                     "title":"Books List",
                     "payload" : "booklist"
                   },
