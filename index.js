@@ -38,8 +38,9 @@ app.get('/register_books/:sender_id',function(req,res){
 
 
 app.post('/register_books', (req,res)=> {
-  let email = req.body.email;
-  let phno = req.body.phno;
+  let author = req.body.author;
+  let bookname = req.body.bookname;
+  let bookshopname = req.body.bookshopname;
    let sender = req.body.sender; 
  // let sender = req.senderID;
 
@@ -52,8 +53,10 @@ app.post('/register_books', (req,res)=> {
 
 
    db.collection('Book').add({
-            email:email,
-            phno:phno
+            Author:author,
+            adminid:sender,
+            bookname:bookname,
+            bookshopname:bookshopname
           }).then(success => {             
              textMessage(sender,"Register Successful");  
              res.status(200).send("Registration Successful and Please go back to your messages and please check your book detail");
