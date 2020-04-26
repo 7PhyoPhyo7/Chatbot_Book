@@ -417,7 +417,7 @@ requestify.post(sendmessageurl,
               {
                 "type":"postback",
                 "title":"Complete",
-                "payload":`Workcomplete ${doc.data().email} `
+                "payload":`Workcomplete`
               }
 
              ]}
