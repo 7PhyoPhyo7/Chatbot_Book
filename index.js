@@ -426,6 +426,10 @@ requestify.post(sendmessageurl,
              console.log(elementItems)
 
 
+     
+          })
+
+      
                requestify.post('https://graph.facebook.com/v6.0/me/messages?access_token='+PAGE_ACCESS_TOKEN,
                         {
                           "recipient":{
@@ -443,10 +447,6 @@ requestify.post(sendmessageurl,
                         }).catch((err) => {
                           console.log('Error getting documents', err);
                         });
-     
-          })
-
-      
                  
                   
                       
