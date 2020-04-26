@@ -21,12 +21,16 @@ app.get('/', (req, res)=>{
 })
 
 app.get('/register_books', (req, res) => {
-  res.sendFile(`${__dirname}/public/registerbooks.html`);
+//  res.sendFile(`${__dirname}/public/registerbooks.html`);
+res.sendFile(`${__dirname}/public/book.php`);
 })
 
 app.post('/register_books', (req,res)=> {
-  let name = req.body.name;
+  let name = req.body.userName;
+  let sender = req.body.sender;
   console.log("Name",name);
+  console.log("Sender PHP",sender);
+
 })
 
  // -- variables firebase
