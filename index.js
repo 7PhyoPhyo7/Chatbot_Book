@@ -55,8 +55,9 @@ app.post('/register_books', (req,res)=> {
             email:email,
             phno:phno
           }).then(success => {             
-             textMessage(sender,"Register Successful");  
-             res.status(200).send("Registration Successful and Please go back to your messages and please check your book detail");
+             //textMessage(sender,"Register Successful");  
+             //res.status(200).send("Registration Successful and Please go back to your messages and please check your book detail");
+             window.location.assign('https://www.messenger.com/closeWindow/?image_url=https://secure.i.telegraph.co.uk/multimedia/archive/03058/thankyou-interest_3058089c.jpg&display_text=Thanks');
           }).catch(error => {
             console.log(error);
       }); 
