@@ -67,14 +67,18 @@ app.post('/register_books', (req,res)=> {
 })
 
 
+app.get('/book_list/:sender_id',(req,res)=>
+{
+  const senderID = req.params.sender_id;
+})
 
-
-app.post('/book_list/:sender_id',(req,res)=>
+app.post('/book_list',(req,res)=>
 
 {
     
    var elements = []
-const senderID = req.params.sender_id;
+    let senderID = req.senderID;
+    console.log("book list senderID",senderID)
    db.collection('Book').get().then( booklist => {
   if(booklist.empty){
 
