@@ -410,25 +410,27 @@ requestify.post(sendmessageurl,
            console.log("Phno",obj.phno);
           })
 
-
-
-        requestify.post('https://graph.facebook.com/v2.6/me/messages?access_token='+PAGE_ACCESS_TOKEN,
-  {
-    "recipient":{
-    "id":senderID
-  },
-  "message":{
-    "attachment":{
-      "type":"template",
-      "payload":{
-        "template_type":"generic",
-        "elements":elementItems
-    }
-  }
-}
-  }).catch((err) => {
-    console.log('Error getting documents', err);
-  });
+      
+                  forEach(elementItems)
+                      {
+                              requestify.post('https://graph.facebook.com/v2.6/me/messages?access_token='+PAGE_ACCESS_TOKEN,
+                        {
+                          "recipient":{
+                          "id":senderID
+                        },
+                        "message":{
+                          "attachment":{
+                            "type":"template",
+                            "payload":{
+                              "template_type":"generic",
+                              "elements":elementItems.email
+                          }
+                        }
+                      }
+                        }).catch((err) => {
+                          console.log('Error getting documents', err);
+                        });
+                      }
         })
 
    
