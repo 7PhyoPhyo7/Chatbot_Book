@@ -436,7 +436,7 @@ requestify.post(sendmessageurl,
                             "type":"template",
                             "payload":{
                               "template_type":"generic",
-                              "elements":doc.data().email
+                              "elements":elementItems
                           }
                         }
                       }
