@@ -49,13 +49,7 @@ app.post('/register_books', (req,res)=> {
   console.log("Title",title);
   console.log("description",description);
   //console.log("Sender",sender);
-    requestify.post('https://graph.facebook.com/v2.6/me/messages?access_token='+PAGE_ACCESS_TOKEN, {
-        "recipient":{
-        "id":sender},
-        "message":{
-          "text":"Register Successful!"
-        }
-      })
+    textMessage(sender,"Register successful!");
 
 })
 
