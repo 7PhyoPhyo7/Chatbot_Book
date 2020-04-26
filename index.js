@@ -48,8 +48,7 @@ app.post('/register_books', (req,res)=> {
   // requestify
 
   // res.render('success.ejs', {}); TODO: show success page
-  console.log("email",email);
-  console.log("phno",phno);
+  
 
 
    db.collection('Book').add({
