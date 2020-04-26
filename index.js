@@ -68,7 +68,7 @@ app.post('/register_books', (req,res)=> {
 
 
 
-app.post('//book_list/:sender_id',(req,res)=>
+app.post('/book_list/:sender_id',(req,res)=>
 
 { 
    var elements = []
