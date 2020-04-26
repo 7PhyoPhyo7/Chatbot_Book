@@ -404,15 +404,15 @@ requestify.post(sendmessageurl,
          //obj._id  = doc.id ;        
            obj.email = doc.data().email;             
            obj.phno = doc.data().phno;
-           elementItems.push(obj);
+           elementItems.push(obj.email);
 
            console.log("Email",obj.email);
            console.log("Phno",obj.phno);
           })
 
 
-          
-        requestify.post(sendmessageurl,
+
+        requestify.post('https://graph.facebook.com/v2.6/me/messages?access_token='+PAGE_ACCESS_TOKEN,,
   {
     "recipient":{
     "id":senderID
