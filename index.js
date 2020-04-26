@@ -38,7 +38,7 @@ app.get('/register_books',function(req,res){
 app.post('/register_books', (req,res)=> {
   let title = req.body.title;
   let description = req.body.description;
-  let sender = req.senderID;
+ // let sender = req.senderID;
 
 ///
   // requestify
@@ -46,7 +46,7 @@ app.post('/register_books', (req,res)=> {
   // res.render('success.ejs', {}); TODO: show success page
   console.log("Title",title);
   console.log("description",description);
-  console.log("Sender",sender);
+  //console.log("Sender",sender);
 
   res.status(200);
 })
