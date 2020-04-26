@@ -287,6 +287,10 @@ requestify.post(sendmessageurl,
 
                       textMessage(senderID,'Welcome Admin');
                     }
+                    else if (userInput == 'booklist')
+                    {
+                      Get_BookList(senderID);
+                    }
                 
                  }
            })
@@ -383,6 +387,56 @@ requestify.post(sendmessageurl,
           "text":text
         }
       })
+  }
+
+
+  function Get_BookList(senderID)
+  {
+
+var elements = []
+    
+   
+   db.collection('Book').get().then(booklist => {
+  if(booklist.empty){
+
+  }
+    else{
+elements = []
+      booklist.forEach( doc => {
+     
+        let data = {
+            "title":doc.data.email,
+            "subtitle":doc.data.phno,
+              "buttons":[
+              {
+                "type":"postback",
+                "title":"Complete",
+                "payload":`Workcomplete`
+              }
+
+             ]}
+             console.log(data)
+             elements.push(data)
+             console.log(elements)
+      
+})
+requestify.post(sendmessageurl,
+  {
+    "recipient":{
+    "id":senderID
+  },
+  "message":{
+    "attachment":{
+      "type":"template",
+      "payload":{
+        "template_type":"generic",
+        "elements":elements
+    }
+  }
+}
+  })}
+})
+
   }
 
  function RegisterBook(senderID,text){
