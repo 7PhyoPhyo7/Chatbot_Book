@@ -189,7 +189,7 @@ app.get('/testing', (req, res) => {
                       // textMessage(senderID,'Welcome Admin')
                       RegisterBook(senderID,'Welcome Admin');
                     }
-                    else
+                    else if (userInput == 'Start')
                     {
                       textMessage(senderID,'Welcome Admin');
                     }
