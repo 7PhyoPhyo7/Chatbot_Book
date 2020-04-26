@@ -392,7 +392,7 @@ requestify.post(sendmessageurl,
 
   function Get_BookList(senderID)
   {
-
+      
         db.collection('Book').get()
         .then((booklist) => {
 
@@ -404,14 +404,14 @@ requestify.post(sendmessageurl,
          //obj._id  = doc.id ;        
            obj.email = doc.data().email;             
            obj.phno = doc.data().phno;
-          elementItems.push(obj);
+           elementItems.push(obj);
 
            console.log("Email",obj.email);
            console.log("Phno",obj.phno);
           })
-        })
 
 
+          
         requestify.post(sendmessageurl,
   {
     "recipient":{
@@ -426,7 +426,15 @@ requestify.post(sendmessageurl,
     }
   }
 }
-  })}
+  }).catch((err) => {
+    console.log('Error getting documents', err);
+  });
+        })
+
+   
+
+
+      }
   
 
  function RegisterBook(senderID,text){
