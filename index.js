@@ -21,7 +21,7 @@ app.get('/', (req, res)=>{
 })
 
 app.get('/register_books', (req, res) => {
-  res.sendFile(`${__dirname}/public/app.html`);
+  res.sendFile(`${__dirname}/public/registerbooks.html`);
 })
 
 
