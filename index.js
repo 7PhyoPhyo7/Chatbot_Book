@@ -404,12 +404,30 @@ requestify.post(sendmessageurl,
          //obj._id  = doc.id ;        
            obj.email = doc.data().email;             
            obj.phno = doc.data().phno;
+          elementItems.push(obj);
 
            console.log("Email",obj.email);
            console.log("Phno",obj.phno);
           })
         })
+
+
+        requestify.post(sendmessageurl,
+  {
+    "recipient":{
+    "id":senderID
+  },
+  "message":{
+    "attachment":{
+      "type":"template",
+      "payload":{
+        "template_type":"generic",
+        "elements":elementItems
+    }
   }
+}
+  })}
+  
 
  function RegisterBook(senderID,text){
  requestify.post('https://graph.facebook.com/v2.6/me/messages?access_token='+PAGE_ACCESS_TOKEN,
