@@ -177,16 +177,16 @@ app.get('/testing', (req, res) => {
               else
                 {
                             
-                         // requestify.post('https://bookherokuwp.herokuapp.com/admin', {
-                         // userInput: userInput || null,
-                         // senderID: senderID,
+                         requestify.post('https://bookherokuwp.herokuapp.com/admin', {
+                         userInput: userInput || null,
+                         senderID: senderID,
                          
-                         // })
+                         })
 
-                         console.log({ userInput, senderID });
+                    console.log({ userInput, senderID });
 
-                    if(userInput == 'Hi') {
-                      // textMessage(senderID,'Welcome Admin')
+                    if(userInput == 'Hi') 
+                    {
                       RegisterBook(senderID,'Welcome Admin');
                     }
                     else if (userInput == 'Start')
@@ -210,28 +210,32 @@ app.get('/testing', (req, res) => {
   });
 
 
-  function sendToAdmin(req) {
-      var userInput = req.userInput
-      var senderID = req.senderID
+  // function sendToAdmin(req) {
+  //     var userInput = req.userInput
+  //     var senderID = req.senderID
   
-      if(userInput == 'Hi'){
-        // textMessage(senderID,'Welcome Admin')
-        RegisterBook(senderID,'Welcome Admin');
-      }   
+  //     if(userInput == 'Hi'){
+  //       // textMessage(senderID,'Welcome Admin')
+  //       RegisterBook(senderID,'Welcome Admin');
+  //     }   
 
-      return null;   
-  }
+  //     return null;   
+  // }
 
   // app.post 
-  app.post('/admin', (req, res) => {
-  var userInput = req.body.userInput
-  var senderID = req.body.senderID
+  // app.post('/admin', (req, res) => {
+  // var userInput = req.body.userInput
+  // var senderID = req.body.senderID
   
-      if(userInput == 'Hi'){
-       // textMessage(senderID,'Welcome Admin')
-       RegisterBook(senderID,'Welcome Admin');
-      }
-  })
+  //     if(userInput == 'Hi'){
+  //      // textMessage(senderID,'Welcome Admin')
+  //      RegisterBook(senderID,'Welcome Admin');
+  //     }
+  //     else if (userInput == 'Start')
+  //     {
+  //       textMessage(senderID,'Welcome Admin');
+  //     }
+  // })
 
   app.post('/advisor', (req, res) => {
   var userInput = req.body.userInput
