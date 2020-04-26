@@ -192,6 +192,7 @@ app.get('/testing', (req, res) => {
                     else if (userInput == 'Start')
                     {
                       textMessage(senderID,'Welcome Admin');
+                      greeting(senderID,'Please Type "Hi" to Start Admin Process! ');
                     }
                 
                  }
@@ -271,6 +272,18 @@ app.get('/testing', (req, res) => {
 
   function textMessage(senderID,text){
       requestify.post('https://graph.facebook.com/v2.6/me/messages?access_token='+PAGE_ACCESS_TOKEN, {
+        "recipient":{
+        "id":senderID},
+        "message":{
+          "text":text
+        }
+      })
+  }
+
+
+  function greeting(senderID,text)
+  {
+    requestify.post('https://graph.facebook.com/v2.6/me/messages?access_token='+PAGE_ACCESS_TOKEN, {
         "recipient":{
         "id":senderID},
         "message":{
