@@ -62,14 +62,16 @@
    
       const windowShut = () => {
         MessengerExtensions.requestCloseBrowser(function success() {
-          console.log("success");          
+          console.log("success"); 
+              
         }, function error(err) {
           console.log(err);
         });
       }
 
       
-      document.getElementById("form").addEventListener("submit", windowShut);       
+      document.getElementById("form").addEventListener("submit", windowShut);
+
 
 
      

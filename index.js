@@ -9,6 +9,7 @@ const
   fs = require('fs'),
   har = require('har-validator'),
   promise = require('promise'),
+  gax = require('google-gax');
   sendmessageurl='https://graph.facebook.com/v6.0/me/messages?access_token='+PAGE_ACCESS_TOKEN,
   pagelevelurl = 'https://graph.facebook.com/v6.0/me/messenger_profile?access_token='+PAGE_ACCESS_TOKEN,
   //userlevelurl = 'https://graph.facebook.com/v6.0/me/custom_user_settings?psid='+senderID+'&access_token='+PAGE_ACCESS_TOKEN,
@@ -54,7 +55,8 @@ app.post('/register_books', (req,res)=> {
             email:email,
             phno:phno
           }).then(success => {             
-             textMessage(sender,"Register Successful");    
+             textMessage(sender,"Register Successful");  
+             res.send(200).send("Registration Successful and Please go back to your messages and please check your book detail");
           }).catch(error => {
             console.log(error);
       }); 
