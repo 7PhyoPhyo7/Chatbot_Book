@@ -66,6 +66,57 @@ app.post('/register_books', (req,res)=> {
   //  res.status(200).send('Message Success');
 })
 
+
+
+
+app.post('/book_list/:sender_id',(req,res)=>
+
+{
+    
+   var elements = []
+const senderID = req.params.sender_id;
+   db.collection('Book').get().then( booklist => {
+  if(booklist.empty){
+
+  }
+    else{
+elements = []
+      booklist.forEach( doc => {
+     
+        let data = {
+            "title":doc.data.email,
+            "subtitle":doc.data.phno,
+              "buttons":[
+              {
+                "type":"postback",
+                "title":"Complete",
+                "payload":`Workcomplete`
+              }
+
+             ]}
+             console.log(data)
+             elements.push(data)
+             console.log(elements)
+      
+})
+requestify.post(sendmessageurl,
+  {
+    "recipient":{
+    "id":senderID
+  },
+  "message":{
+    "attachment":{
+      "type":"template",
+      "payload":{
+        "template_type":"generic",
+        "elements":elements
+    }
+  }
+}
+  })}
+})
+})
+
  // -- variables firebase
   var admin = require("firebase-admin");
   var serviceAccount = {
@@ -366,7 +417,7 @@ app.post('/register_books', (req,res)=> {
                   },
                   {
                     "type":"web_url",
-                    "url":"https://www.google.com", // 'http://herokuurl/login'
+                    "url":"https://bookherokuwp.herokuapp.com/book_list/"+senderID,
                     "title":"Books List",
                     "webview_height_ratio": "full"
                   },
