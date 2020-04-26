@@ -20,10 +20,20 @@ app.get('/', (req, res)=>{
   res.send("Hello Oppa!");
 })
 
-app.get('/register_books', (req, res) => {
-//  res.sendFile(`${__dirname}/public/registerbooks.html`);
-res.sendFile(`${__dirname}/public/testing.ejs`);
-})
+// app.get('/register_books', (req, res) => {
+// //  res.sendFile(`${__dirname}/public/registerbooks.html`);
+// res.sendFile(`${__dirname}/public/testing.ejs`);
+// })
+
+
+app.set('view engine', 'ejs');
+app.set('views', __dirname+'/views');
+
+app.get('/register_books/:sender_id',function(req,res){
+    const sender_id = req.params.sender_id;
+    res.render('testing.ejs',{title:"Hi!! from WebView", sender_id:sender_id});
+});
+
 
 app.post('/register_books', (req,res)=> {
   let title = req.body.title;
