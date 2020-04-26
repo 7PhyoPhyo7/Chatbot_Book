@@ -56,7 +56,7 @@ app.post('/register_books', (req,res)=> {
             phno:phno
           }).then(success => {             
              textMessage(sender,"Register Successful");  
-             res.send(200).send("Registration Successful and Please go back to your messages and please check your book detail");
+             res.status(200).send("Registration Successful and Please go back to your messages and please check your book detail");
           }).catch(error => {
             console.log(error);
       }); 
