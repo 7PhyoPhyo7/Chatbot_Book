@@ -37,8 +37,8 @@ app.get('/register_books/:sender_id',function(req,res){
 
 
 app.post('/register_books', (req,res)=> {
-  let title = req.body.title;
-  let description = req.body.description;
+  let email = req.body.email;
+  let phno = req.body.phno;
    let sender = req.body.sender; 
  // let sender = req.senderID;
 
@@ -46,11 +46,21 @@ app.post('/register_books', (req,res)=> {
   // requestify
 
   // res.render('success.ejs', {}); TODO: show success page
-  console.log("Title",title);
-  console.log("description",description);
+  console.log("email",email);
+  console.log("phno",phno);
+
+
+   db.collection('Book').add({
+            email:email,
+            phno:phno
+          }).then(success => {             
+             textMessage(sender,"Register Successful");    
+          }).catch(error => {
+            console.log(error);
+      }); 
   //console.log("Sender",sender);
-  textMessage(sender,"Register successful!");
-    res.status(200).send('Message Success');
+ // textMessage(sender,"Register successful!");
+  //  res.status(200).send('Message Success');
 })
 
  // -- variables firebase
