@@ -15,6 +15,7 @@ const
   app = express().use(body_parser.json()); // creates express http server
 
 app.use(express.static('public'));
+app.use(express.urlencoded());
 
 app.get('/', (req, res)=>{
   res.send("Hello Oppa!");
@@ -30,18 +31,24 @@ app.set('view engine', 'ejs');
 app.set('views', __dirname+'/public');
 
 app.get('/register_books',function(req,res){
-    res.render('testing.ejs',{title:"Hi!! from WebView"});
+    res.render('testing.ejs',{ title:"Hi!! from WebView"});
 });
 
 
 app.post('/register_books', (req,res)=> {
   let title = req.body.title;
   let description = req.body.description;
-  let sender = req.body.senderID;
-  console.log("title",title);
-  console.log("description",description);
-  
+  let sender = req.senderID;
 
+///
+  // requestify
+
+  // res.render('success.ejs', {}); TODO: show success page
+  console.log("Title",title);
+  console.log("description",description);
+  console.log("Sender",sender);
+
+  res.status(200);
 })
 
  // -- variables firebase
