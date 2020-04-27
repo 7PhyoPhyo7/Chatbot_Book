@@ -473,6 +473,12 @@ requestify.post(sendmessageurl,
         "id":senderID},
         "message":{
           "text":text
+        },
+        "message":{
+          "text":text
+        },
+        "message":{
+          "text":text
         }
       })
   }
