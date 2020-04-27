@@ -79,10 +79,11 @@ app.get('/edit_book/:sender_id/:bookname',function(req,res)
               blist.forEach((doc) => { 
                author = doc.data().Author;
                bookshopname = doc.data().bookshopname; 
+               console.log("Author",doc.data().Author);
+        console.log("Bookshopname",doc.data().Bookshopname);
                 })
         })
-        console.log("Author",author);
-        console.log("Bookshopname",bookshopname);
+        
 
   res.render('edit_book.ejs',{title: "Please Modify following book",sender_id:sender_id,bookname:bookname});
 })
