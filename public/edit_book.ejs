@@ -38,10 +38,7 @@
 	<h1><%= title %></h1>
 
   <form id="form" method="post" action="/edit_book">
-  <!-- <div class="form-group">
-    <label for="name">Image</label>
-    <input type="text" class="form-control" id="image" name="image" placeholder="Enter image url">    
-  </div> -->
+  
   
   <div class="form-group">
     <label for="bookname">Book Name</label>
@@ -65,7 +62,7 @@
 	
   <script>
       
-   
+   /*
       const windowShut = () => {
         MessengerExtensions.requestCloseBrowser(function success() {
           console.log(" Wnindeow Shut success"); 
@@ -78,8 +75,8 @@
       
       document.getElementById("form").addEventListener("submit", window.location.assign(('https://www.messenger.com/closeWindow/?image_url=https://secure.i.telegraph.co.uk/multimedia/archive/03058/thankyou-interest_3058089c.jpg&display_text=Thanks'));
 
-
-
+*/
+     document.getElementById("form").addEventListener("submit",alert("I am after submit"));
      
 
   </script>
