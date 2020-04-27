@@ -102,12 +102,13 @@ app.post('/edit_book',(req,res)=>{
   console.log("received");
   let bookname = req.body.bookname;
   let bookshopname  = req.body.bookshopname;
-  let sender_id =  req.body.sender;
+  let sender=  req.body.sender;
   let author = req.body.author;
   let docid  = req.body.docid;
   console.log("postdocid",docid)
   console.log("Bookshopname---",bookshopname);
   console.log("Author---",author); 
+  console.log("Sender----",sender);
    // db.collection('Book').where('bookname', '==', `${bookname}`).update({
    //          Author:author,
    //          bookshopname:bookshopname
@@ -117,7 +118,7 @@ app.post('/edit_book',(req,res)=>{
 
    //      })
 
-       db.collection('Book').where('bookname','==',`${bookname}`).where('adminid','==',`${sender_id}`).get().then(bolist => {
+       db.collection('Book').where('bookname','==',`${bookname}`).where('adminid','==',`${sender}`).get().then(bolist => {
   if(bolist.empty){
 
   }else{
