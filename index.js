@@ -76,9 +76,10 @@ app.get('/edit_book/:sender_id/:bookname',function(req,res)
 
   db.collection('Book').where('bookname', '==', `${bookname}`).get()
         .then((blist) => {
-          blist.forEach((doc) => { 
-          author = doc.data().Author;
-          bookshopname = doc.data().bookshopname; 
+              blist.forEach((doc) => { 
+              author = doc.data().Author;
+              bookshopname = doc.data().bookshopname; 
+                })
         })
         console.log("Author",author);
         console.log("Bookshopname",bookshopname);
