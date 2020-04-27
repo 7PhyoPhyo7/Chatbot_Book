@@ -366,7 +366,7 @@ requestify.post(sendmessageurl,
                       var split = userInput.split(' ');
                       console.log("First", split[1]);
                       let author='';
-                      let Bookshopname='';
+                      let bookshopname='';
                       db.collection("Book").where('bookname', '==', `${split[1]}`).get()
                         .then((blist) => {
                             blist.forEach((doc) => {
