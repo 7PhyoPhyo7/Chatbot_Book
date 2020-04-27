@@ -73,20 +73,25 @@ app.get('/edit_book/:sender_id/:bookname',function(req,res)
   const bookname = req.params.bookname;
  var author ='';
  var bookshopname='';
+ //var book = [];
 
   db.collection('Book').where('bookname', '==', `${bookname}`).get()
         .then((blist) => {
               blist.forEach((doc) => {
               author = doc.data().Author;
               bookshopname = doc.data().bookshopname; 
-               console.log("Author",author);
-        console.log("Bookshopname",bookshopname);
+              
+        //book.push(author);
+        //.push(bookshopname);
                 })
+ console.log("Author",author);
+        console.log("Bookshopname",bookshopname);
+               res.render('edit_book.ejs',{title: "Please Modify following book",sender_id:sender_id,bookname:bookname,author:author,bookshopname:bookshopname});
         })
         
-    console.log("Author---",author);
-    console.log("Bookshopname---",bookshopname);
-  res.render('edit_book.ejs',{title: "Please Modify following book",sender_id:sender_id,bookname:bookname});
+  //   console.log("Author---",book[0]); 
+  //   console.log("Bookshopname---",book[1]);
+  // res.render('edit_book.ejs',{title: "Please Modify following book",sender_id:sender_id,bookname:bookname});
 })
 
 /*
