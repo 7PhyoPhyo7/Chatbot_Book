@@ -100,7 +100,7 @@ app.post('/edit_book',(req,res)=>{
   let bookshopname  = req.body.bookshopname;
   let sender_id =  req.body.sender_id;
   let author = req.body.author;
-   db.collection('Book').where('bookname', '==', `${bookname}`).where('adminid', '==', `${sender_id}`).update({
+   db.collection('Book').where('bookname', '==', `${bookname}`).and('adminid', '==', `${sender_id}`).update({
             Author:author,
             bookshopname:bookshopname
             }).then(success => {             
