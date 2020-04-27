@@ -120,7 +120,7 @@ app.post('/edit_book',(req,res)=>{
   }else{
     bolist.forEach(doc => {
       console.log(doc.id)
-      db.collection('Book').doc(doc.id).update(Author:author,bookshopname:bookshopname,{merge: true})
+      db.collection('Book').doc(doc.id).update({Author:author,bookshopname:bookshopname},{merge: true})
     })
   }
 })
