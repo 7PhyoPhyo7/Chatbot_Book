@@ -365,8 +365,31 @@ requestify.post(sendmessageurl,
                     {
                       var split = userInput.split(' ');
                       console.log("First", split[1]);
-                      console.log("Second", split[2]);
-                      Book_detail(senderID);
+                      let author='';
+                      let Bookshopname='';
+                      db.collection("Book").where('bookname', '==', `${split[1]}`).get()
+                        .then((blist) => {
+                            blist.forEach((doc) => {
+                            author = doc.data().Author;
+                            bookshopname = doc.data().bookshopname; 
+                             })
+
+                                requestify.post('https://graph.facebook.com/v2.6/me/messages?access_token='+PAGE_ACCESS_TOKEN, {
+                                     "recipient":{
+                                     "id":senderID},
+                                     "message":{
+                                      "text": 'Book : '+split[1]
+                                      },
+                                      "message":{
+                                      "text": 'Author : '+author
+                                      },
+                                      "message":{
+                                      "text":  'Bookshopname : '+bookshopname
+                                      }
+                                 })
+                        })
+                      
+                      
                     }
                 
                  }
