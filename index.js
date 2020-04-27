@@ -94,6 +94,21 @@ app.get('/edit_book/:sender_id/:bookname',function(req,res)
   // res.render('edit_book.ejs',{title: "Please Modify following book",sender_id:sender_id,bookname:bookname});
 })
 
+
+app.post('/edit_book',(req,res)=>{
+  let bookname = req.body.bookname;
+  let bookshopname  = req.body.bookshopname;
+  let sender_id =  req.body.sender_id;
+  let author = req.body.author;
+   db.collection('Book').where('bookname', '==', `${bookname}`).and('adminid', '==', `${sender_id}`).UPDATE({
+            Author:author,
+            bookshopname:bookshopname
+            }).then(success => {             
+             textMessage(sender,"Update Successful");  
+             res.status(200).send("Update Successful and Please go back to your messages and please check your book detail");
+
+})
+
 /*
 app.post('/book_list/:sender_id',(req,res)=>
 
@@ -449,7 +464,7 @@ requestify.post(sendmessageurl,
               {
                     "type":"web_url",
                     "url":"https://bookherokuwp.herokuapp.com/edit_book/"+senderID+"/"+doc.data().bookname,
-                    "title":"Register Books",
+                    "title":"Edit Books",
                     "webview_height_ratio": "full"
                   },
 
