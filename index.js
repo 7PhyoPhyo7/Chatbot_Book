@@ -114,7 +114,16 @@ app.post('/edit_book',(req,res)=>{
 
    //      })
 
+       db.collection('Book').where('bookname','==',`${bookname}`).where('adminid','==',`${sender_id}`).get().then(bolist => {
+  if(bolist.empty){
 
+  }else{
+    bolist.forEach(doc => {
+      console.log(doc.id)
+      db.collection('Book').doc(doc.id).update(Author:author,bookshopname:bookshopname,{merge: true})
+    })
+  }
+})
     
   })
 
