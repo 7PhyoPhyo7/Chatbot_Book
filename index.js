@@ -417,10 +417,16 @@ requestify.post(sendmessageurl,
             "subtitle":doc.data().Author,
               "buttons":[
               {
-                "type":"postback",
-                "title":"Complete",
-                "payload":`Workcomplete`
-              }
+                    "type":"postback",
+                    "title":"Book Detail",
+                    "payload":`Workcomplete`
+              },
+              {
+                    "type":"web_url",
+                    "url":"https://bookherokuwp.herokuapp.com/edit_book/"+senderID+doc.data().bookname,
+                    "title":"Register Books",
+                    "webview_height_ratio": "full"
+                  },
 
              ]}
              console.log(data)
