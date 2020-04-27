@@ -73,6 +73,7 @@ app.get('/edit_book/:sender_id/:bookname',function(req,res)
   const bookname = req.params.bookname;
  var author ='';
  var bookshopname='';
+ var docid='';
  //var book = [];
 
   db.collection('Book').where('bookname', '==', `${bookname}`).get()
@@ -80,13 +81,15 @@ app.get('/edit_book/:sender_id/:bookname',function(req,res)
               blist.forEach((doc) => {
               author = doc.data().Author;
               bookshopname = doc.data().bookshopname; 
+              docid = doc.id;
               
         //book.push(author);
         //.push(bookshopname);
                 })
  console.log("Author",author);
         console.log("Bookshopname",bookshopname);
-               res.render('edit_book.ejs',{title: "Please Modify following book",sender_id:sender_id,bookname:bookname,author:author,bookshopname:bookshopname});
+        console.log("getdocid",docid)
+               res.render('edit_book.ejs',{title: "Please Modify following book",sender_id:sender_id,bookname:bookname,author:author,bookshopname:bookshopname,docid:docid});
         })
         
   //   console.log("Author---",book[0]); 
@@ -100,14 +103,19 @@ app.post('/edit_book',(req,res)=>{
   let bookshopname  = req.body.bookshopname;
   let sender_id =  req.body.sender_id;
   let author = req.body.author;
-   db.collection('Book').where('bookname', '==', `${bookname}`).update({
-            Author:author,
-            bookshopname:bookshopname
-            }).then(success => {             
-             textMessage(sender,"Update Successful");  
-             res.status(200).send("Update Successful and Please go back to your messages and please check your book detail");
+  let docid  = req.body.docid;
+  console.log("postdocid",docid)
+   // db.collection('Book').where('bookname', '==', `${bookname}`).update({
+   //          Author:author,
+   //          bookshopname:bookshopname
+   //          }).then(success => {             
+   //           textMessage(sender,"Update Successful");  
+   //           res.status(200).send("Update Successful and Please go back to your messages and please check your book detail");
 
-        })
+   //      })
+
+
+    
   })
 
 /*
