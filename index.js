@@ -428,7 +428,7 @@ requestify.post(sendmessageurl,
               },
               {
                     "type":"web_url",
-                    "url":"https://bookherokuwp.herokuapp.com/edit_book/"+senderID+doc.data().bookname,
+                    "url":"https://bookherokuwp.herokuapp.com/edit_book/"+senderID+"/"+doc.data().bookname,
                     "title":"Register Books",
                     "webview_height_ratio": "full"
                   },
