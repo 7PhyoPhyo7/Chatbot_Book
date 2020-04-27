@@ -379,12 +379,22 @@ requestify.post(sendmessageurl,
                                      "id":senderID},
                                      "message":{
                                       "text": 'Book : '+split[1]
-                                      },
-                                      "message":{
+                                      }
+                                 })
+
+                                requestify.post('https://graph.facebook.com/v2.6/me/messages?access_token='+PAGE_ACCESS_TOKEN, {
+                                     "recipient":{
+                                     "id":senderID},
+                                     "message":{
                                       "text": 'Author : '+author
-                                      },
-                                      "message":{
-                                      "text":  'Bookshopname : '+bookshopname
+                                      }
+                                 })
+
+                                requestify.post('https://graph.facebook.com/v2.6/me/messages?access_token='+PAGE_ACCESS_TOKEN, {
+                                     "recipient":{
+                                     "id":senderID},
+                                     "message":{
+                                      "text": 'Bookshopname : '+bookshopname
                                       }
                                  })
                         })
@@ -471,12 +481,6 @@ requestify.post(sendmessageurl,
       requestify.post('https://graph.facebook.com/v2.6/me/messages?access_token='+PAGE_ACCESS_TOKEN, {
         "recipient":{
         "id":senderID},
-        "message":{
-          "text":text
-        },
-        "message":{
-          "text":text
-        },
         "message":{
           "text":text
         }
