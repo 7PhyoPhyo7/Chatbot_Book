@@ -361,6 +361,13 @@ requestify.post(sendmessageurl,
                     {
                       Get_BookList(senderID);
                     }
+                    else if (userInput.includes('book_detail'))
+                    {
+                      var split = userInput.split(' ');
+                      console.log("First", split[1]);
+                      console.log("Second", split[2]);
+                      Book_detail(senderID);
+                    }
                 
                  }
            })
@@ -487,7 +494,7 @@ requestify.post(sendmessageurl,
               {
                     "type":"postback",
                     "title":"Book Detail",
-                    "payload":`Workcomplete`
+                    "payload":`book_detail ${doc.data().bookname}`
               },
               {
                     "type":"web_url",
@@ -617,6 +624,11 @@ requestify.post(sendmessageurl,
                                 }).catch(err=>{console.log("err",err)})
                         
 
+
+  }
+
+  function Book_detail(senderID)
+  {
 
   }
 
