@@ -610,12 +610,6 @@ requestify.post(sendmessageurl,
                     "title":"Books List",
                     "payload" : "booklist"
                   },
-                  {
-                    "type":"web_url",
-                    "url":"https://bookherokuwp.herokuapp.com/testing",
-                    "title":"Edit Books",
-                    "webview_height_ratio": "full"
-                  }
                ]}
 
         ]
