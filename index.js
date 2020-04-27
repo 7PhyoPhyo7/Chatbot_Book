@@ -71,21 +71,22 @@ app.get('/edit_book/:sender_id/:bookname',function(req,res)
 {
   const sender_id = req.params.sender_id;
   const bookname = req.params.bookname;
-  let   au = 'ba' ;
-  let   bo = 'ab' ;
+  let  Book=[]
 
   db.collection('Book').where('bookname', '==', `${bookname}`).get()
         .then((blist) => {
-              blist.forEach((doc) => { 
-               au = doc.data().Author;
-               bo = doc.data().bookshopname; 
-               console.log("Author",doc.data().Author);
+              blist.forEach((doc) => {
+              let au = doc.data().Author;
+              let bo = doc.data().bookshopname; 
+               console.log("Author",au);
         console.log("Bookshopname",doc.data().bookshopname);
+              Book.push(au);
+              Book.push(bo)
                 })
         })
         
-    console.log("Author---",au);
-        console.log("Bookshopname---",bo);
+    console.log("Author---",Book[0]);
+    console.log("Bookshopname---",Book[1]);
   res.render('edit_book.ejs',{title: "Please Modify following book",sender_id:sender_id,bookname:bookname});
 })
 
