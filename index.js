@@ -71,6 +71,17 @@ app.get('/edit_book/:sender_id/:bookname',function(req,res)
 {
   const sender_id = req.params.sender_id;
   const bookname = req.params.bookname;
+  let   author = '';
+  let   bookshopname ='';
+
+  db.collection('Book').where('bookname', '==', `${bookname}`).get()
+        .then((booklist) => {
+           author = booklist.Author;
+           bookshopname = book_list.bookshopname;
+        })
+        console.log("Author",author);
+        console.log("Bookshopname",bookshopname);
+
   res.render('edit_book.ejs',{title: "Please Modify following book",sender_id:sender_id,bookname:bookname});
 })
 
