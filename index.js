@@ -33,7 +33,7 @@ app.set('views', __dirname+'/public');
 
 app.get('/register_books/:sender_id',function(req,res){
   const sender_id = req.params.sender_id;
-    res.render('testing.ejs',{ title:"Hi!! from WebView", sender_id:sender_id});
+    res.render('testing.ejs',{ title:"Please Register Books", sender_id:sender_id});
 });
 
 
@@ -48,8 +48,6 @@ app.post('/register_books', (req,res)=> {
   // requestify
 
   // res.render('success.ejs', {}); TODO: show success page
-  
-
 
    db.collection('Book').add({
             Author:author,
@@ -68,6 +66,13 @@ app.post('/register_books', (req,res)=> {
   //  res.status(200).send('Message Success');
 })
 
+
+app.get('/edit_book/:sender_id/:bookname',function(req,res)
+{
+  const sender_id = req.params.sender_id;
+  const bookname = req.params.bookname;
+  res.render('edit_book.ejs',{title: "Please Modify following book",sender_id:sender_id,bookname:bookname});
+})
 
 /*
 app.post('/book_list/:sender_id',(req,res)=>
