@@ -102,7 +102,7 @@ app.post('/edit_book',(req,res)=>{
   console.log("received");
   let bookname = req.body.bookname;
   let bookshopname  = req.body.bookshopname;
-  let sender_id =  req.body.sender_id;
+  let sender_id =  req.body.sender;
   let author = req.body.author;
   let docid  = req.body.docid;
   console.log("postdocid",docid)
