@@ -71,8 +71,8 @@ app.get('/edit_book/:sender_id/:bookname',function(req,res)
 {
   const sender_id = req.params.sender_id;
   const bookname = req.params.bookname;
-  let   author ;
-  let   bookshopname;
+  let   author = 'ba' ;
+  let   bookshopname = 'ab' ;
 
   db.collection('Book').where('bookname', '==', `${bookname}`).get()
         .then((blist) => {
