@@ -357,7 +357,7 @@ requestify.post(sendmessageurl,
                                         })
 
                                        */
-                                       if(userInput)
+                                       if(userInput == 'Start')
                                        {
                                         textMessage(senderID,"Welcome User");
                                        }
