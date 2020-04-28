@@ -281,13 +281,13 @@ requestify.post(sendmessageurl,
           console.log('senderID',senderID);
           if(webhook_event.postback)
              {
-            var userInput=webhook_event.postback.payload; 
+            var UserInput=webhook_event.postback.payload; 
              }
           if (webhook_event.message) 
              {
                 if (webhook_event.message.text) 
                 {
-                      var userInput=webhook_event.message.text;
+                      var usermessage=webhook_event.message.text;
                       
                       
                 }
@@ -363,6 +363,7 @@ requestify.post(sendmessageurl,
                                        }
                                        else if(userInput == 'search_book')
                                        {
+
                                           SearchBook(senderID,"Please Choose Search Type!");
                                        }
                                        else if(userInput == 'recommand_book')
@@ -372,6 +373,38 @@ requestify.post(sendmessageurl,
                                        else if(userInput == 'modify_user')
                                        {
                                             ModifyUser(senderID,"Please Choose Way of Edit!");
+                                       }
+                                       else if(userInput == 'bytyping')
+                                       {
+                                            var stockno = 1;
+                                           db.collection(Book).where('bookname','==',`${usermessage}`).where('stock','>=',`${stockno}`).get().then(booklist => {
+                                            if(booklist.empty)
+                                            {
+                                              textMessage(senderID,"Book Not Found");
+                                            }
+                                            else 
+                                            {
+                                               console.log("UserMessage",usermessage);
+                                              booklist.forEach((doc) => {
+                                              
+                                              let data = {
+                                                    "title":doc.data().bookname,
+                                                    "subtitle":doc.data().Author,
+                                                      "buttons":[
+                                                      {
+                                                            "type":"postback",
+                                                            "title":"Avaliable Bookshop",
+                                                            "payload":`bookshop_detail ${doc.data().bookname}`
+                                                      }
+                                                      
+                                                     ]}
+
+                                                  console.log("Authorrrrr",doc.data().Author);
+                                        //book.push(author);
+                                        //.push(bookshopname);
+                                                })
+                                            }
+                                           })
                                        }
                                         requestify.post("https://graph.facebook.com/v6.0/me/custom_user_settings?psid="+senderID+"&access_token="+PAGE_ACCESS_TOKEN,
                                       {
@@ -434,14 +467,13 @@ requestify.post(sendmessageurl,
 
                     console.log({ userInput, senderID });
 
-                    if(userInput == 'Hi') 
+                    if(usermessage == 'Hi') 
                     {
                       RegisterBook(senderID,'Welcome Admin');
                     }
                     else if (userInput == 'Start')
                     {
                       greeting(senderID,'Please Type "Hi" to Start Admin Process! ');
-
                       textMessage(senderID,'Welcome Admin');
                     }
                     else if (userInput == 'booklist')
@@ -545,7 +577,7 @@ requestify.post(sendmessageurl,
         textMessage(senderID,'Welcome Advisor')
       }
   })
-
+/*
   app.post('/user', (req, res) => {
   var userInput = req.body.userInput
   var senderID = req.body.senderID
@@ -561,7 +593,7 @@ requestify.post(sendmessageurl,
      QuickReply(senderID,'Welcome New User');
       }
   })
-
+*/
    app.get('/register_user/:sender_id',function(req,res){
   const sender_id = req.params.sender_id;
     res.render('register_user.ejs',{ title:"Please Register User", sender_id:sender_id});
