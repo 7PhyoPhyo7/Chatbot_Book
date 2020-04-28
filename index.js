@@ -381,7 +381,7 @@ requestify.post(sendmessageurl,
                                        else if(userInput == 'bytyping')
                                        {
                                             var stockno = 1;
-                                            console.log("UserMessage",usermessage);
+                                            console.log("UserInput---------",userInput);
                                            db.collection(Book).where('bookname','==',`${usermessage}`).get().then(booklist => {
                                             if(booklist.empty)
                                             {
