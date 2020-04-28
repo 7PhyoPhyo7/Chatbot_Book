@@ -382,7 +382,7 @@ requestify.post(sendmessageurl,
                                        {
                                             var stockno = 1;
                                             console.log("UserInput---------",userInput);
-                                           db.collection(Book).where('bookname','==',`${usermessage}`).get().then(booklist => {
+                                           db.collection("Book").where('bookname','==',`${usermessage}`).get().then(booklist => {
                                             if(booklist.empty)
                                             {
                                               textMessage(senderID,"Book Not Found");
