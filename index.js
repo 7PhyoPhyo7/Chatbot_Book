@@ -382,6 +382,7 @@ requestify.post(sendmessageurl,
                                        {
                                             var stockno = 1;
                                             console.log("UserInput---------",userInput);
+                                              console.log("um---------",usermessage);
                                            db.collection("Book").where('bookname','==',`${usermessage}`).get().then(booklist => {
                                             if(booklist.empty)
                                             {
