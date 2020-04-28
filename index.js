@@ -398,9 +398,9 @@ requestify.post(sendmessageurl,
                                 //       }
                                 //  })
 
-                                textMessage(senderID,split[1]);
-                                textMessage(senderID,author);
-                                textMessage(senderID,bookshopname);
+                                textBookDetail(senderID,split[1],"Book");
+                                textBookDetail(senderID,author,"Author");
+                                textBookDetail(senderID,bookshopname,"Bookshopname");
                         })
                       
                       
@@ -490,6 +490,18 @@ requestify.post(sendmessageurl,
         }
       })
   }
+
+
+  function textBookDetail(senderID,text,front){
+      requestify.post('https://graph.facebook.com/v2.6/me/messages?access_token='+PAGE_ACCESS_TOKEN, {
+        "recipient":{
+        "id":senderID},
+        "message":{
+          "text": front + " : " + text
+        }
+      })
+  }
+
 
 
   function greeting(senderID,text)
