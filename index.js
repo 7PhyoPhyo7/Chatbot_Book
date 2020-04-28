@@ -282,7 +282,7 @@ requestify.post(sendmessageurl,
           console.log('senderID',senderID);
           if(webhook_event.postback)
              {
-            var UserInput=webhook_event.postback.payload; 
+            var userInput=webhook_event.postback.payload; 
              }
           if (webhook_event.message) 
              {
@@ -352,10 +352,12 @@ requestify.post(sendmessageurl,
                                         else
                                     {
                                       
+                                        /*
                                         requestify.post('https://bookherokuwp.herokuapp.com/user', {
                                         userInput: userInput|| null,
                                         senderID: senderID
                                         })
+                                        */
 
                                        
                                        if(userInput == 'Start')
