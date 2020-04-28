@@ -212,7 +212,8 @@ requestify.post(sendmessageurl,
    
   // GetStart and Greeting message (page level)
   requestify.post(pagelevelurl,
-    {"get_started":{"payload":"Start"},  
+    {"get_started":{"payload":"Start",
+                     "type": "postback"},  
   "greeting": [
     {
       "locale":"default",
@@ -357,9 +358,9 @@ requestify.post(sendmessageurl,
                                         })
 
                                        */
-                                       if(usermessage == 'Start')
+                                       if(userInput == 'Start')
                                        {
-                                        console.log("UserMessage",usermessage);
+                                        console.log("UserMessage",userInput);
                                         textMessage(senderID,"Welcome User");
                                        }
                                        else if(userInput == 'search_book')
