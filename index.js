@@ -365,6 +365,8 @@ requestify.post(sendmessageurl,
                     {
                       var split = userInput.split(' ');
                       console.log("First", split[1]);
+                      let result = userInput.substring(10);
+                      console.log("substring",result);
                       let author='';
                       let bookshopname='';
                       db.collection("Book").where('bookname', '==', `${split[1]}`).get()
