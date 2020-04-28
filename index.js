@@ -351,13 +351,13 @@ requestify.post(sendmessageurl,
                                     }
                                         else
                                     {
-                                      /*
+                                      
                                         requestify.post('https://bookherokuwp.herokuapp.com/user', {
                                         userInput: userInput|| null,
                                         senderID: senderID
                                         })
 
-                                       */
+                                       
                                        if(userInput == 'Start')
                                        {
                                         console.log("UserMessage",userInput);
@@ -579,15 +579,15 @@ requestify.post(sendmessageurl,
         textMessage(senderID,'Welcome Advisor')
       }
   })
-/*
+
   app.post('/user', (req, res) => {
   var userInput = req.body.userInput
   var senderID = req.body.senderID
-    if(userInput){
+    if(userInput == "Start"){
       textMessage(senderID,'Welcome User')
     }
   })
-
+/*
   app.post('/RegisterQuickReply', (req, res) => {
   var userInput = req.body.userInput
   var senderID = req.body.senderID
