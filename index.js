@@ -309,13 +309,15 @@ requestify.post(sendmessageurl,
                                         if(userList.empty)
                                     {
                                  
+
+                                   /*
                                        requestify.post('https://bookherokuwp.herokuapp.com/RegisterQuickReply', {
                                         userInput: userInput || null,
                                         senderID: senderID,
                                         image: userMedia
                                         })
 
-
+                                    */
                                       requestify.post("https://graph.facebook.com/v6.0/me/custom_user_settings?psid="+senderID+"&access_token="+PAGE_ACCESS_TOKEN,
                                       {
                                       "persistent_menu":[
@@ -332,7 +334,7 @@ requestify.post(sendmessageurl,
                                         {
                                           "type":"web_url",
                                           "title":"Before Visit Page",
-                                          "url":"https://mym-acavxb.firebaseapp.com/index.html",
+                                          "url":"https://bookherokuwp.herokuapp.com/register_user/"+senderID,
                                           "webview_height_ratio":"tall"
 
 
@@ -548,11 +550,37 @@ requestify.post(sendmessageurl,
       }
   })
 
-  app.get('/login', (req, res) => {
-    // ejs lote tl
+   app.get('/register_user/:sender_id',function(req,res){
+  const sender_id = req.params.sender_id;
+    res.render('register_user.ejs',{ title:"Please Register User", sender_id:sender_id});
+});
 
-    // res.send( <payload> );
-  })
+
+app.post('/register_user', (req,res)=> {
+  let name = req.body.name;
+ 
+  let sender = req.body.sender;
+
+///
+  // requestify
+
+  // res.render('success.ejs', {}); TODO: show success page
+
+   db.collection('Reader').add({
+            id:sender,
+            name:name
+          }).then(success => {             
+             textMessage(sender,"User Register Successful");  
+             textMessage(sender, "Please refersh your messager");
+             res.status(200).send("User Registration Successful and Please go back to your messages and please refersh your messager");
+            // window.location.assign('https://www.messenger.com/closeWindow/?image_url=https://secure.i.telegraph.co.uk/multimedia/archive/03058/thankyou-interest_3058089c.jpg&display_text=Thanks');
+          }).catch(error => {
+            console.log(error);
+      }); 
+  //console.log("Sender",sender);
+ // textMessage(sender,"Register successful!");
+  //  res.status(200).send('Message Success');
+})
 
   // functions
 
