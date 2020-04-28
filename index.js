@@ -363,13 +363,13 @@ requestify.post(sendmessageurl,
                     }
                     else if (userInput.includes('book_detail'))
                     {
-                      var split = userInput.split(' ');
-                      console.log("First", split[1]);
-                      let result = userInput.substring(10);
+                      //var split = userInput.split(' ');
+                     // console.log("First", split[1]);
+                      let result = userInput.substring(12);
                       console.log("substring",result);
                       let author='';
                       let bookshopname='';
-                      db.collection("Book").where('bookname', '==', `${split[1]}`).get()
+                      db.collection("Book").where('bookname', '==', `${result}`).get()
                         .then((blist) => {
                             blist.forEach((doc) => {
                             author = doc.data().Author;
@@ -400,7 +400,7 @@ requestify.post(sendmessageurl,
                                 //       }
                                 //  })
 
-                                textBookDetail(senderID,split[1],"Book");
+                                textBookDetail(senderID,result,"Book");
                                 textBookDetail(senderID,author,"Author");
                                 textBookDetail(senderID,bookshopname,"Bookshopname");
                         })
