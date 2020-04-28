@@ -318,22 +318,18 @@ requestify.post(sendmessageurl,
                                         })
 
                                     */
+                                      textMessage(senderID,"Welcome New User!")
+                                      textMessage(senderID,"Plese register first and got to Menu!")
                                       requestify.post("https://graph.facebook.com/v6.0/me/custom_user_settings?psid="+senderID+"&access_token="+PAGE_ACCESS_TOKEN,
                                       {
                                       "persistent_menu":[
                                       {
                                         "locale":"default",
-                                        "composer_input_disabled":false,
+                                        "composer_input_disabled":true,
                                         "call_to_actions":[
                                         {
-                                          "type":"postback",
-                                          "title":"Before User",
-                                          "payload":"Hi"
-
-                                        },
-                                        {
                                           "type":"web_url",
-                                          "title":"Before Visit Page",
+                                          "title":"Register User",
                                           "url":"https://bookherokuwp.herokuapp.com/register_user/"+senderID,
                                           "webview_height_ratio":"tall"
 
@@ -365,6 +361,18 @@ requestify.post(sendmessageurl,
                                        {
                                         textMessage(senderID,"Welcome User");
                                        }
+                                       else if(userInput == 'search_book')
+                                       {
+                                          SearchBook(senderID,"Please Choose Search Type!");
+                                       }
+                                       else if(userInput == 'recommand_book')
+                                       {
+
+                                       }
+                                       else if(userInput == 'modify_user')
+                                       {
+                                            ModifyUser(senderID,"Please Choose Way of Edit!");
+                                       }
                                         requestify.post("https://graph.facebook.com/v6.0/me/custom_user_settings?psid="+senderID+"&access_token="+PAGE_ACCESS_TOKEN,
                                       {
                                       "persistent_menu":[
@@ -374,18 +382,22 @@ requestify.post(sendmessageurl,
                                         "call_to_actions":[
                                         {
                                           "type":"postback",
-                                          "title":"After User",
-                                          "payload":"Hi"
+                                          "title":"Search Books",
+                                          "payload":"search_book"
 
                                         },
                                         {
-                                          "type":"web_url",
-                                          "title":"After Visit Page",
-                                          "url":"https://mym-acavxb.firebaseapp.com/index.html",
-                                          "webview_height_ratio":"tall"
+                                          "type":"postback",
+                                          "title":"Recomand Books",
+                                          "payload":"recommand_book"
 
+                                        },
+                                        {
+                                          "type":"postback",
+                                          "title":"Modify User",
+                                          "payload":"modify_user"
 
-                                        }
+                                        },                                        
                                       ]
 
                                     }
@@ -571,8 +583,7 @@ app.post('/register_user', (req,res)=> {
             name:name
           }).then(success => {             
              textMessage(sender,"User Register Successful");  
-             textMessage(sender, "Please refersh your messager");
-             res.status(200).send("User Registration Successful and Please go back to your messages and please refersh your messager");
+             res.status(200).send("User Registration Successful and Please go back to your messages and start your journey with Menu");
             // window.location.assign('https://www.messenger.com/closeWindow/?image_url=https://secure.i.telegraph.co.uk/multimedia/archive/03058/thankyou-interest_3058089c.jpg&display_text=Thanks');
           }).catch(error => {
             console.log(error);
@@ -773,8 +784,79 @@ app.post('/register_user', (req,res)=> {
 
   }
 
-  function Book_detail(senderID)
+function SearchBook(senderID,text){
+ requestify.post('https://graph.facebook.com/v2.6/me/messages?access_token='+PAGE_ACCESS_TOKEN,
   {
+    "recipient":{
+      "id":senderID
+    },
+  "message":{
+   "attachment":{
+        "type":"template",
+        "payload":{
+          "template_type":"generic",
+          "elements":[
+             {
+              "title":text,
+              "subtitle":"Please Register Book",
+                "buttons":[
+                   {
+                    "type":"postback",
+                    "payload":"bytyping",
+                    "title":"By Typing",
+                    "webview_height_ratio": "full"
+                  },
+                  {
+                    "type":"postback",
+                    "payload":"bycategory",
+                    "title":"By Category",
+                    "webview_height_ratio": "full"
+                  },
+               ]}
 
+        ]
+      }
+    }
   }
+  })
+ 
+}
 
+
+function ModifyUser(senderID,text){
+ requestify.post('https://graph.facebook.com/v2.6/me/messages?access_token='+PAGE_ACCESS_TOKEN,
+  {
+    "recipient":{
+      "id":senderID
+    },
+  "message":{
+   "attachment":{
+        "type":"template",
+        "payload":{
+          "template_type":"generic",
+          "elements":[
+             {
+              "title":text,
+              "subtitle":"Please Register Book",
+                "buttons":[
+                   {
+                    "type":"postback",
+                    "payload":"edituser",
+                    "title":"Edit User",
+                    "webview_height_ratio": "full"
+                  },
+                  {
+                    "type":"postback",
+                    "payload":"promotereviewer",
+                    "title":"Promote Review",
+                    "webview_height_ratio": "full"
+                  },
+               ]}
+
+        ]
+      }
+    }
+  }
+  })
+ 
+}
