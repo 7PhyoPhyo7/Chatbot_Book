@@ -305,7 +305,7 @@ requestify.post(sendmessageurl,
                       db.collection('BookAdvisor').where('id','==',`${senderID}`).get().then(advisorList => {
                           if(advisorList.empty)
                            {
-                              db.collection('user').where('id','==',`${senderID}`).get().then(userList => {
+                              db.collection('Reader').where('id','==',`${senderID}`).get().then(userList => {
                                         if(userList.empty)
                                     {
                                  
@@ -313,14 +313,87 @@ requestify.post(sendmessageurl,
                                         userInput: userInput || null,
                                         senderID: senderID,
                                         image: userMedia
-                                               })
+                                        })
+
+
+                                      requestify.post("https://graph.facebook.com/v6.0/me/custom_user_settings?psid="+senderID+"&access_token="+PAGE_ACCESS_TOKEN,
+                                      {
+                                      "persistent_menu":[
+                                      {
+                                        "locale":"default",
+                                        "composer_input_disabled":false,
+                                        "call_to_actions":[
+                                        {
+                                          "type":"postback",
+                                          "title":"Before User",
+                                          "payload":"Hi"
+
+                                        },
+                                        {
+                                          "type":"web_url",
+                                          "title":"Before Visit Page",
+                                          "url":"https://mym-acavxb.firebaseapp.com/index.html",
+                                          "webview_height_ratio":"tall"
+
+
+                                        }
+                                      ]
+
+                                    }
+                                   ]
+
+                                  }).then(function(success) {
+                                    console.log('New User Persistent_menu.success');
+                                    // body...
+                                  })
+
+
+
                                     }
                                         else
                                     {
+                                      /*
                                         requestify.post('https://bookherokuwp.herokuapp.com/user', {
                                         userInput: userInput|| null,
                                         senderID: senderID
-                                                })
+                                        })
+
+                                       */
+                                       if(userInput)
+                                       {
+                                        textMessage(senderID,"Welcome User");
+                                       }
+                                        requestify.post("https://graph.facebook.com/v6.0/me/custom_user_settings?psid="+senderID+"&access_token="+PAGE_ACCESS_TOKEN,
+                                      {
+                                      "persistent_menu":[
+                                      {
+                                        "locale":"default",
+                                        "composer_input_disabled":false,
+                                        "call_to_actions":[
+                                        {
+                                          "type":"postback",
+                                          "title":"After User",
+                                          "payload":"Hi"
+
+                                        },
+                                        {
+                                          "type":"web_url",
+                                          "title":"After Visit Page",
+                                          "url":"https://mym-acavxb.firebaseapp.com/index.html",
+                                          "webview_height_ratio":"tall"
+
+
+                                        }
+                                      ]
+
+                                    }
+                                   ]
+
+                                  }).then(function(success) {
+                                    console.log('Already User Persistent_menu.success');
+                                    // body...
+                                  })
+
                                     }
                                })
                         
