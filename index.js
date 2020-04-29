@@ -422,7 +422,7 @@ requestify.post(sendmessageurl,
                                        {
                                         console.log("UserMessage_searchtype",usermessage);
                                         search_type = '';
-                                        console.log("SearchType-Balar",search_type);
+                                        SearchByTyping(senderID,usermessage);
                                        }
 
 
@@ -880,3 +880,69 @@ function ModifyUser(senderID,text){
   })
  
 }
+
+ function SearchByTyping (senderID,usermessage)
+ {
+       var stockno = 1;
+                                            
+                   
+                                           db.collection("Book").where('bookname','==',`${usermessage}`).get().then(booklist => {
+                                            if(booklist.empty)
+                                            {
+                                              textMessage(senderID,"Book Not Found");
+                                            }
+                                            else 
+                                            {
+                                               console.log("UserMessage",usermessage);
+                                              booklist.forEach((doc) => {
+                                              
+                                              let data = {
+                                                    "title":doc.data().bookname,
+                                                    "subtitle":doc.data().Author,
+                                                      "buttons":[
+                                                      {
+                                                            "type":"postback",
+                                                            "title":"Avaliable Bookshop",
+                                                            "payload":`bookshop_detail ${doc.data().bookname}`
+                                                      }
+                                                      
+                                                     ]}
+
+                                                  console.log("Authorrrrr",doc.data().Author);
+                                        //book.push(author);
+                                        //.push(bookshopname);
+
+
+                                        requestify.post('https://graph.facebook.com/v2.6/me/messages?access_token='+PAGE_ACCESS_TOKEN,
+                                          {
+                                            "recipient":{
+                                              "id":senderID
+                                            },
+                                          "message":{
+                                           "attachment":{
+                                                "type":"template",
+                                                "payload":{
+                                                  "template_type":"generic",
+                                                  "elements":[
+                                                     {
+                                                      "title":usermessage,
+                                                      "subtitle": doc.data().Author,
+                                                        "buttons":[
+                                                           {
+                                                            "type":"postback",
+                                                            "payload":"promotereviewer",
+                                                            "title":"Bookshop Address",
+                                                            "webview_height_ratio": "full"
+                                                          },
+                                                       ]}
+
+                                                ]
+                                              }
+                                            }
+                                          }
+                                          })
+
+                                                })
+                                            }
+                                           })
+ }
