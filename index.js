@@ -934,11 +934,11 @@ function ModifyUser(senderID,text){
                                                   "elements":[
                                                      {
                                                       "title":usermessage,
-                                                      "subtitle": "Bookshop : "+doc.data().Bookshopname,
+                                                      "subtitle": "Bookshop : "+doc.data().bookshopname,
                                                         "buttons":[
                                                            {
                                                             "type":"postback",
-                                                            "payload":`bookshop_detail ${doc.data().stock} ${doc.data().bookshopadderss}`,
+                                                            "payload":`bookshop_detail ${doc.data().stock} ${doc.data().bookshopaddress}`,
                                                             "title":"Bookshop Address",
                                                             "webview_height_ratio": "full"
                                                           },
