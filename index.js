@@ -428,9 +428,9 @@ requestify.post(sendmessageurl,
                                        else if (userInput.includes("bookshop_detail"))
                                        {
                                         var dataarray = userInput.split(' ');
-                                        textMessage(senderID,dataarray[0]);
-                                        textMessage(senderID,dataarray[1]);
-                                        textMessage(senderID,dataarray[2]);
+                                      //  textMessage(senderID,dataarray[0]);
+                                        textMessage(senderID,"Amount of Book in Store : "+dataarray[1]);
+                                        textMessage(senderID,"Bookshop Address : "dataarray[2]);
                                        }
 
 
@@ -934,11 +934,11 @@ function ModifyUser(senderID,text){
                                                   "elements":[
                                                      {
                                                       "title":usermessage,
-                                                      "subtitle": doc.data().Author,
+                                                      "subtitle": "Bookshop : "+doc.data().Bookshopname,
                                                         "buttons":[
                                                            {
                                                             "type":"postback",
-                                                            "payload":`bookshop_detail ${doc.data().stock} ${doc.data().bookshopname}`,
+                                                            "payload":`bookshop_detail ${doc.data().stock} ${doc.data().bookshopadderss}`,
                                                             "title":"Bookshop Address",
                                                             "webview_height_ratio": "full"
                                                           },
