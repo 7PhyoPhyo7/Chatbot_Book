@@ -887,7 +887,7 @@ function ModifyUser(senderID,text){
        var stockno = 1;
                                             
                    
-                                           db.collection("Book").where('bookname','==',`${usermessage}`).where('stock','>=',`${stockno}`).get().then(booklist => {
+                                           db.collection("Book").where('bookname','==',`${usermessage}`).where('stock','>=',`${stockno}`).get().then(.booklist => {
                                             if(booklist.empty)
                                             {
                                               textMessage(senderID,"Book Not Found");
@@ -945,5 +945,8 @@ function ModifyUser(senderID,text){
 
                                                 })
                                             }
-                                           })
+                                           }).catch(error => {
+            console.log("Error Last",error);
+      }); 
+
  }
