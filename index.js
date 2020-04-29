@@ -886,20 +886,36 @@ function ModifyUser(senderID,text){
  {
        var stockno = 1;
                                             
-                   
-                                           db.collection("Book").where('bookname','==',`${usermessage}`).get().then(booklist => {
+                        
+                                            
+                                              console.log("um---------",usermessage);
+                                           db.collection("Book").where('bookname','==',`${usermessage}`).where('stock','==',`${stockno}`).get().then(booklist => {
                                             if(booklist.empty)
                                             {
                                               textMessage(senderID,"Book Not Found");
                                             }
                                             else 
                                             {
-                                              booklist.forEach((doc)=>
-                                              {
-                                                 db.collection("Book").where('stock','>=',`${stockno}`).get().then(finalbooklist=> {
-                                                  console.log("Author",finalbooklist.doc.data().Author);
-                                                 })
-                                              })
+                                               console.log("UserMessage",usermessage);
+                                              booklist.forEach((doc) => {
+                                              
+                                              let data = {
+                                                    "title":doc.data().bookname,
+                                                    "subtitle":doc.data().Author,
+                                                      "buttons":[
+                                                      {
+                                                            "type":"postback",
+                                                            "title":"Avaliable Bookshop",
+                                                            "payload":`bookshop_detail ${doc.data().bookname}`
+                                                      }
+                                                      
+                                                     ]}
+
+                                                  console.log("Authorrrrr",doc.data().Author);
+                                        //book.push(author);
+                                        //.push(bookshopname);
+                                                })
                                             }
-                                     })
+                                           })
+
   }
