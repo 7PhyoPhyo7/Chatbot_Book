@@ -898,7 +898,7 @@ function ModifyUser(senderID,text){
                                                         }
                                                         else 
                                                         {
-                                                          bolist.forEach(doc => {
+                                                          booklist.forEach(doc => {
                                                                     console.log(doc.id)
                                                                     db.collection('Book').doc(doc.id).get() 
                                                                        .then((blist) => { 
