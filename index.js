@@ -892,6 +892,7 @@ function ModifyUser(senderID,text){
                                            db.collection("Book").where('bookname','==',`${usermessage}`).where('stock','==',`${stockno}`).get().then(booklist => {
                                             if(booklist.empty)
                                             {
+                                              textMessage(senderID,stockno);
                                               textMessage(senderID,"Book Not Found");
                                             }
                                             else 
