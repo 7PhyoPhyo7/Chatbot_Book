@@ -382,7 +382,14 @@ requestify.post(sendmessageurl,
                                        {
                                         console.log("UserInput---------",userInput);
                                         console.log("UserMessage--------",webhook_event.messages.text);
-                                               if(usermessage == "BeLu")
+
+                                        requestify.post('https://bookherokuwp.herokuapp.com/user', {
+                                        usermessage: usermessage|| null,
+                                        senderID: senderID
+                                        })
+
+                                        /*
+                                        if(usermessage == "BeLu")
                                                {
                                             var stockno = 1;
                                             
@@ -416,6 +423,7 @@ requestify.post(sendmessageurl,
                                             }
                                            })
                                        }
+                                       */
                                         requestify.post("https://graph.facebook.com/v6.0/me/custom_user_settings?psid="+senderID+"&access_token="+PAGE_ACCESS_TOKEN,
                                       {
                                       "persistent_menu":[
@@ -589,10 +597,10 @@ requestify.post(sendmessageurl,
   })
 
   app.post('/user', (req, res) => {
-  var userInput = req.body.userInput
+  var usermessage = req.body.usermessage
   var senderID = req.body.senderID
-    if(userInput == "Start"){
-      textMessage(senderID,'Welcome User')
+    if(usermessage){
+      textMessage(senderID,'Welcome User'+usermessage)
     }
   })
 /*
