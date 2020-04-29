@@ -381,7 +381,7 @@ requestify.post(sendmessageurl,
                                        else if(userInput == 'bytyping')
                                        {
                                         console.log("UserInput---------",userInput);
-                                               if(webhook_event.messages.text)
+                                               if(webhook_event.messages.text == "BeLu")
                                                {
                                             var stockno = 1;
                                             
