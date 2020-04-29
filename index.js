@@ -938,7 +938,7 @@ function ModifyUser(senderID,text){
                                                         "buttons":[
                                                            {
                                                             "type":"postback",
-                                                            "payload":`bookshop_detail ${doc.data().stock} ${doc.data().Bookshopname}`,
+                                                            "payload":`bookshop_detail ${doc.data().stock} ${doc.data().bookshopname}`,
                                                             "title":"Bookshop Address",
                                                             "webview_height_ratio": "full"
                                                           },
