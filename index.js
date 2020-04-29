@@ -362,7 +362,7 @@ requestify.post(sendmessageurl,
                                        
                                        if(userInput == 'Start')
                                        {
-                                        console.log("UserMessage",userInput);
+                                       // console.log("UserMessage",userInput);
                                         textMessage(senderID,"Welcome User");
                                        }
                                        else if(userInput == 'search_book')
@@ -380,6 +380,8 @@ requestify.post(sendmessageurl,
                                        }
                                        else if(userInput == 'bytyping')
                                        {
+                                               if(usermessage)
+                                               {
                                             var stockno = 1;
                                             console.log("UserInput---------",userInput);
                                               console.log("um---------",usermessage);
@@ -446,7 +448,7 @@ requestify.post(sendmessageurl,
                                     console.log('Already User Persistent_menu.success');
                                     // body...
                                   })
-
+                                     }
                                     }
                                })
                         
