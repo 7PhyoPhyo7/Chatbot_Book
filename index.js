@@ -897,7 +897,7 @@ function ModifyUser(senderID,text){
                                               booklist.forEach((doc)=>
                                               {
                                                  db.collection("Book").where('stock','>=',`${stockno}`).get().then(finalbooklist=> {
-                                                  console.log("Author",finalbooklist.Author);
+                                                  console.log("Author",finalbooklist.doc.data().Author);
                                                  })
                                               })
                                             }
