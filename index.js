@@ -381,11 +381,11 @@ requestify.post(sendmessageurl,
                                        else if(userInput == 'bytyping')
                                        {
                                         console.log("UserInput---------",userInput);
-                                               if(webhook_event.messages.text == "BeLu")
+                                               if(usermessage == "BeLu")
                                                {
                                             var stockno = 1;
                                             
-                                              console.log("um---------",webhook_event.messages.text);
+                                              console.log("um---------",usermessage);
                                            db.collection("Book").where('bookname','==',`${usermessage}`).get().then(booklist => {
                                             if(booklist.empty)
                                             {
