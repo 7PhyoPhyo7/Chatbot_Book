@@ -22,6 +22,8 @@ app.get('/', (req, res)=>{
   res.send("Hello Oppa!");
 })
 
+ var search_type = '';
+
 // app.get('/register_books', (req, res) => {
 // //  res.sendFile(`${__dirname}/public/registerbooks.html`);
 // res.sendFile(`${__dirname}/public/testing.ejs`);
@@ -307,7 +309,7 @@ requestify.post(sendmessageurl,
                           if(advisorList.empty)
                            {
                               db.collection('Reader').where('id','==',`${senderID}`).get().then(userList => {
-                                        if(userList.empty)
+                                    if(userList.empty)
                                     {
                                  
 
@@ -358,73 +360,7 @@ requestify.post(sendmessageurl,
                                         senderID: senderID
                                         })
                                         */
-
-                                       
-                                       if(userInput == 'Start')
-                                       {
-                                       // console.log("UserMessage",userInput);
-                                        textMessage(senderID,"Welcome User");
-                                       }
-                                       else if(userInput == 'search_book')
-                                       {
-
-                                          SearchBook(senderID,"Please Choose Search Type!");
-                                       }
-                                       else if(userInput == 'recommand_book')
-                                       {
-
-                                       }
-                                       else if(userInput == 'modify_user')
-                                       {
-                                            ModifyUser(senderID,"Please Choose Way of Edit!");
-                                       }
-                                       else if(userInput == 'bytyping')
-                                       {
-                                        console.log("UserInput---------",userInput);
-                                        //console.log("UserMessage--------",webhook_event.messages.text);
-
-                                        requestify.post('https://bookherokuwp.herokuapp.com/user', {
-                                        usermessage: usermessage|| null,
-                                        senderID: senderID
-                                        })
-
-                                        /*
-                                        if(usermessage == "BeLu")
-                                               {
-                                            var stockno = 1;
-                                            
-                                              console.log("um---------",usermessage);
-                                           db.collection("Book").where('bookname','==',`${usermessage}`).get().then(booklist => {
-                                            if(booklist.empty)
-                                            {
-                                              textMessage(senderID,"Book Not Found");
-                                            }
-                                            else 
-                                            {
-                                               console.log("UserMessage",usermessage);
-                                              booklist.forEach((doc) => {
-                                              
-                                              let data = {
-                                                    "title":doc.data().bookname,
-                                                    "subtitle":doc.data().Author,
-                                                      "buttons":[
-                                                      {
-                                                            "type":"postback",
-                                                            "title":"Avaliable Bookshop",
-                                                            "payload":`bookshop_detail ${doc.data().bookname}`
-                                                      }
-                                                      
-                                                     ]}
-
-                                                  console.log("Authorrrrr",doc.data().Author);
-                                        //book.push(author);
-                                        //.push(bookshopname);
-                                                })
-                                            }
-                                           })
-                                       }
-                                       */
-                                        requestify.post("https://graph.facebook.com/v6.0/me/custom_user_settings?psid="+senderID+"&access_token="+PAGE_ACCESS_TOKEN,
+                                                              requestify.post("https://graph.facebook.com/v6.0/me/custom_user_settings?psid="+senderID+"&access_token="+PAGE_ACCESS_TOKEN,
                                       {
                                       "persistent_menu":[
                                       {
@@ -458,7 +394,41 @@ requestify.post(sendmessageurl,
                                     console.log('Already User Persistent_menu.success');
                                     // body...
                                   })
-                                     }
+                                       
+                                       if(userInput == 'Start')
+                                       {
+                                       // console.log("UserMessage",userInput);
+                                        textMessage(senderID,"Welcome User");
+                                       }
+                                       else if(userInput == 'search_book')
+                                       {
+
+                                          SearchBook(senderID,"Please Choose Search Type!");
+                                       }
+                                       else if(userInput == 'recommand_book')
+                                       {
+
+                                       }
+                                       else if(userInput == 'modify_user')
+                                       {
+                                            ModifyUser(senderID,"Please Choose Way of Edit!");
+                                       }
+                                       else if(userInput == 'bytyping')
+                                       {
+                                        search_type = userInput;
+                                        console.log("SearchType",search_type);
+                                       }
+                                       else if (search_type == 'bytyping')
+                                       {
+                                        console.log("UserMessage_searchtype",usermessage);
+                                        search_type = '';
+                                        console.log("SearchType-Balar",search_type);
+                                       }
+
+
+
+                    
+                           
                                     }
                                })
                         
