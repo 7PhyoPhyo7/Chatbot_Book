@@ -425,6 +425,13 @@ requestify.post(sendmessageurl,
                                         search_type = '';
                                         SearchByTyping(senderID,usermessage);
                                        }
+                                       else if (userInput.includes("bookshop_detail"))
+                                       {
+                                        var dataarray = userInput.split(' ');
+                                        textMessage(senderID,dataarray[0]);
+                                        textMessage(senderID,dataarray[1]);
+                                        textMessage(senderID,dataarray[2]);
+                                       }
 
 
 
@@ -931,7 +938,7 @@ function ModifyUser(senderID,text){
                                                         "buttons":[
                                                            {
                                                             "type":"postback",
-                                                            "payload":"promotereviewer",
+                                                            "payload":`bookshop_detail ${doc.data().stock} ${doc.data().Bookshopname}`,
                                                             "title":"Bookshop Address",
                                                             "webview_height_ratio": "full"
                                                           },
