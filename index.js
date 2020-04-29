@@ -381,7 +381,7 @@ requestify.post(sendmessageurl,
                                        else if(userInput == 'bytyping')
                                        {
                                         console.log("UserInput---------",userInput);
-                                        console.log("UserMessage--------",webhook_event.messages.text);
+                                        //console.log("UserMessage--------",webhook_event.messages.text);
 
                                         requestify.post('https://bookherokuwp.herokuapp.com/user', {
                                         usermessage: usermessage|| null,
