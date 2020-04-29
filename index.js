@@ -414,7 +414,8 @@ requestify.post(sendmessageurl,
                                                 })
                                             }
                                            })
-                                       }
+                                       }.catch(error => {
+                                            console.log("Error",error);
                                         requestify.post("https://graph.facebook.com/v6.0/me/custom_user_settings?psid="+senderID+"&access_token="+PAGE_ACCESS_TOKEN,
                                       {
                                       "persistent_menu":[
