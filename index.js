@@ -430,7 +430,7 @@ requestify.post(sendmessageurl,
                                         var dataarray = userInput.split(' ');
                                       //  textMessage(senderID,dataarray[0]);
                                         textMessage(senderID,"Amount of Book in Store : "+dataarray[1]);
-                                        textMessage(senderID,"Bookshop Address : "dataarray[2]);
+                                        textMessage(senderID,"Bookshop Address : "+dataarray[2]);
                                        }
 
 
