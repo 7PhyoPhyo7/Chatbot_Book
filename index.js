@@ -840,8 +840,14 @@ function SearchBook(senderID,text){
                   },
                   {
                     "type":"postback",
-                    "payload":"bycategory",
-                    "title":"By Category",
+                    "payload":"byauthor",
+                    "title":"By Author",
+                    "webview_height_ratio": "full"
+                  },
+                  {
+                    "type":"postback",
+                    "payload":"bymyownhobby",
+                    "title":"By My Own Hobbies",
                     "webview_height_ratio": "full"
                   },
                ]}
