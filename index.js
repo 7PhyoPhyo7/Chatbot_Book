@@ -426,15 +426,15 @@ requestify.post(sendmessageurl,
                                        //  search_type = '';
 
                                        //  SearchByTyping(senderID,usermessage);
-                                          QuickReplyforTyping(senderID,"Please type BookName","searchbookname");
+                                          QuickReplyforTyping(senderID,"Please type BookName","hoke");
                                        }
-                                       else if (userInput == 'searchbookname')
+                                       else if (userInput == 'hoke')
                                        {
 
                                             search_type = userInput;
                                              console.log("search",search_type);
                                        }
-                                       else if (search_type == 'searchbookname')
+                                       else if (search_type == 'hoke')
                                        {
                                            console.log("Usermessage",usermessage);
                                            SearchByTyping(senderID,usermessage);
