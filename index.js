@@ -416,7 +416,7 @@ requestify.post(sendmessageurl,
                                        else if(userInput == 'bytyping')
                                        {
                                         search_type = userInput;
-                                        textMessage(senderID,"Please Type BookName!");
+                                       // textMessage(senderID,"Please Type BookName!");
                                         console.log("SearchType",search_type);
                                         //textMessage(senderID,"Please Type BookName!");
                                        }
