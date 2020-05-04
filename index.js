@@ -430,7 +430,9 @@ requestify.post(sendmessageurl,
                                        }
                                        else if (userInput == 'searchbookname')
                                        {
+
                                             search_type = userInput;
+                                             console.log("search",search_type);
                                        }
                                        else if (search_type == 'searchbookname')
                                        {
