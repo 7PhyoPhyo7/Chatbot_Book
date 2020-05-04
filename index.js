@@ -682,6 +682,7 @@ app.post('/register_user', (req,res)=> {
   },
   
   "message":{
+      "text": "",
        "quick_replies":[
       {
         "content_type":"text",
