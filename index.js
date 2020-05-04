@@ -423,6 +423,7 @@ requestify.post(sendmessageurl,
                                        {
                                         console.log("UserMessage_searchtype",usermessage);
                                         search_type = '';
+                                        textMessage(senderID,"Please Type BookName!");
                                         SearchByTyping(senderID,usermessage);
                                        }
                                        else if (userInput.includes("bookshop_detail"))
@@ -835,7 +836,7 @@ function SearchBook(senderID,text){
                    {
                     "type":"postback",
                     "payload":"bytyping",
-                    "title":"By Typing",
+                    "title":"By BookName",
                     "webview_height_ratio": "full"
                   },
                   {
