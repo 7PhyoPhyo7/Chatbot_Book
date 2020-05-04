@@ -402,7 +402,7 @@ requestify.post(sendmessageurl,
                                        }
                                        else if(userInput == 'search_book')
                                        {
-
+                                          console.log("Searchhh",userInput);
                                           SearchBook(senderID,"Please Choose Search Type!");
                                        }
                                        else if(userInput == 'recommand_book')
@@ -426,15 +426,15 @@ requestify.post(sendmessageurl,
                                        //  search_type = '';
 
                                        //  SearchByTyping(senderID,usermessage);
-                                          QuickReplyforTyping(senderID,"Please type BookName","hoke");
+                                          QuickReplyforTyping(senderID,"Please type BookName");
                                        }
-                                       else if (userInput == 'hoke')
+                                       else if (userInput == "hoke")
                                        {
 
                                             search_type = userInput;
                                              console.log("search",search_type);
                                        }
-                                       else if (search_type == 'hoke')
+                                       else if (search_type == "hoke")
                                        {
                                            console.log("Usermessage",usermessage);
                                            SearchByTyping(senderID,usermessage);
@@ -676,7 +676,7 @@ app.post('/register_user', (req,res)=> {
       })
   }
 
-  function QuickReplyforTyping(senderID,text,payload)
+  function QuickReplyforTyping(senderID,text)
   {
     requestify.post(sendmessageurl,
    {  
@@ -690,7 +690,7 @@ app.post('/register_user', (req,res)=> {
       {
         "content_type":"text",
         "title":text,
-        "payload":payload
+        "payload":"hoke"
         
       }
     ]
