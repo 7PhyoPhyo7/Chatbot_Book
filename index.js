@@ -486,7 +486,7 @@ requestify.post(sendmessageurl,
                       let bookshopname='';
                       db.collection("Book").where('bookname', '==', `${result}`).get()
                         .then((blist) => {
-                            blist.forEach(async (doc) => {
+                            blist.forEach((doc) => {
                             author = doc.data().Author;
                             bookshopname = doc.data().bookshopname; 
                              })
@@ -515,9 +515,13 @@ requestify.post(sendmessageurl,
                                 //       }
                                 //  })
 
-                                await textBookDetail(senderID,result,"Book");
-                                await textBookDetail(senderID,author,"Author");                                
-                                await textBookDetail(senderID,bookshopname,"Bookshopname");
+                                textBookDetail(senderID,result,"Book")
+                                  .then(data1 => {
+                                    textBookDetail(senderID,author,"Author")
+                                      .then(data2 => {
+                                        textBookDetail(senderID,bookshopname,"Bookshopname")
+                                      });
+                                  });
                         })
                       
                       
