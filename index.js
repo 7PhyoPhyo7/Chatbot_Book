@@ -416,6 +416,7 @@ requestify.post(sendmessageurl,
                                        else if(userInput == 'bytyping')
                                        {
                                         search_type = userInput;
+                                        textMessage(senderID,"Please Type BookName!");
                                         console.log("SearchType",search_type);
                                         //textMessage(senderID,"Please Type BookName!");
                                        }
@@ -423,7 +424,7 @@ requestify.post(sendmessageurl,
                                        {
                                         console.log("UserMessage_searchtype",usermessage);
                                         search_type = '';
-                                        textMessage(senderID,"Please Type BookName!");
+
                                         SearchByTyping(senderID,usermessage);
                                        }
                                        else if (userInput.includes("bookshop_detail"))
