@@ -415,17 +415,27 @@ requestify.post(sendmessageurl,
                                        }
                                        else if(userInput == 'bytyping')
                                        {
-                                        search_type = userInput;
-                                        textMessage(senderID,"Please Type BookName!");
-                                        console.log("SearchType",search_type);
-                                        //textMessage(senderID,"Please Type BookName!");
-                                       }
-                                       else if (search_type == 'bytyping')
-                                       {
-                                        console.log("UserMessage_searchtype",usermessage);
-                                        search_type = '';
+                                       //  search_type = userInput;
+                                       //  textMessage(senderID,"Please Type BookName!");
+                                       //  console.log("SearchType",search_type);
+                                       //  //textMessage(senderID,"Please Type BookName!");
+                                       // }
+                                       // else if (search_type == 'bytyping')
+                                       // {
+                                       //  console.log("UserMessage_searchtype",usermessage);
+                                       //  search_type = '';
 
-                                        SearchByTyping(senderID,usermessage);
+                                       //  SearchByTyping(senderID,usermessage);
+                                          QuickReplyforTyping(senderID,"Please type BookName","searchbookname");
+                                       }
+                                       else if (userInput == 'searchbookname')
+                                       {
+                                            search_type = userInput;
+                                       }
+                                       else if (search_type == 'searchbookname')
+                                       {
+                                           SearchByTyping(senderID,usermessage);
+                                           search_type='';
                                        }
                                        else if (userInput.includes("bookshop_detail"))
                                        {
@@ -663,6 +673,27 @@ app.post('/register_user', (req,res)=> {
       })
   }
 
+  function QuickReplyforTyping(senderID,text,payload)
+  {
+    requestify.post(sendmessageurl,
+   {  
+      "recipient":{
+        "id":senderID
+  },
+  
+  "message":{
+       "quick_replies":[
+      {
+        "content_type":"text",
+        "title":text,
+        "payload":payload
+        
+      }
+    ]
+  }
+  }).then(result=>{ console.log("ok")
+      }).catch(err=>{console.log("err",err)}) 
+  }
 
   function Get_BookList(senderID)
   {
