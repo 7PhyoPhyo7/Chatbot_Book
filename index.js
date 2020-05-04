@@ -486,7 +486,7 @@ requestify.post(sendmessageurl,
                       let bookshopname='';
                       db.collection("Book").where('bookname', '==', `${result}`).get()
                         .then((blist) => {
-                            blist.forEach((doc) => {
+                            blist.forEach(async (doc) => {
                             author = doc.data().Author;
                             bookshopname = doc.data().bookshopname; 
                              })
@@ -515,9 +515,9 @@ requestify.post(sendmessageurl,
                                 //       }
                                 //  })
 
-                                textBookDetail(senderID,result,"Book");
-                                textBookDetail(senderID,author,"Author");
-                                textBookDetail(senderID,bookshopname,"Bookshopname");
+                                await textBookDetail(senderID,result,"Book");
+                                await textBookDetail(senderID,author,"Author");                                
+                                await textBookDetail(senderID,bookshopname,"Bookshopname");
                         })
                       
                       
@@ -635,7 +635,7 @@ app.post('/register_user', (req,res)=> {
 
 
   function textBookDetail(senderID,text,front){
-      requestify.post('https://graph.facebook.com/v2.6/me/messages?access_token='+PAGE_ACCESS_TOKEN, {
+      return requestify.post('https://graph.facebook.com/v2.6/me/messages?access_token='+PAGE_ACCESS_TOKEN, {
         "recipient":{
         "id":senderID},
         "message":{
