@@ -415,30 +415,30 @@ requestify.post(sendmessageurl,
                                        }
                                        else if(userInput == 'bytyping')
                                        {
-                                       //  search_type = userInput;
-                                       // // textMessage(senderID,"Please Type BookName!");
-                                       //  console.log("SearchType",search_type);
-                                       //  //textMessage(senderID,"Please Type BookName!");
+                                        search_type = userInput;
+                                       // textMessage(senderID,"Please Type BookName!");
+                                        console.log("SearchType",search_type);
+                                        //textMessage(senderID,"Please Type BookName!");
+                                       }
+                                       else if (search_type == 'bytyping')
+                                       {
+                                        console.log("UserMessage_searchtype",usermessage);
+                                        search_type = '';
+
+                                        SearchByTyping(senderID,usermessage);
+                                       //    QuickReplyforTyping(senderID,"Please type BookName");
                                        // }
-                                       // else if (search_type == 'bytyping')
+                                       // else if (userInput == "hoke")
                                        // {
-                                       //  console.log("UserMessage_searchtype",usermessage);
-                                       //  search_type = '';
 
-                                       //  SearchByTyping(senderID,usermessage);
-                                          QuickReplyforTyping(senderID,"Please type BookName");
-                                       }
-                                       else if (userInput == "hoke")
-                                       {
-
-                                            search_type = userInput;
-                                             console.log("search",search_type);
-                                       }
-                                       else if (search_type == "hoke")
-                                       {
-                                           console.log("Usermessage",usermessage);
-                                           SearchByTyping(senderID,usermessage);
-                                           search_type='';
+                                       //      search_type = userInput;
+                                       //       console.log("search",search_type);
+                                       // }
+                                       // else if (search_type == "hoke")
+                                       // {
+                                       //     console.log("Usermessage",usermessage);
+                                       //     SearchByTyping(senderID,usermessage);
+                                       //     search_type='';
                                        }
                                        else if (userInput.includes("bookshop_detail"))
                                        {
@@ -866,8 +866,8 @@ function SearchBook(senderID,text){
           "template_type":"generic",
           "elements":[
              {
-              "title":text,
-              "subtitle":"**Please type after choosing menu**",
+              "title":"**Please type after choosing menu**",
+              "subtitle":text,
                 "buttons":[
                    {
                     "type":"postback",
