@@ -434,6 +434,7 @@ requestify.post(sendmessageurl,
                                        }
                                        else if (search_type == 'searchbookname')
                                        {
+                                           console.log("Usermessage",usermessage);
                                            SearchByTyping(senderID,usermessage);
                                            search_type='';
                                        }
